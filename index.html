@@ -14,6 +14,7 @@
   --brand:#2337D1; --brand-ink:#FFFFFF; --soft:#ECEBFD; --mark:#F0552F;
   --warn-bg:#FFF3E8; --warn-line:#F3B784; --warn-ink:#6B3510;
   --ok:#2E9E61;
+  --wa:#5FC86E; --tg:#3E95D6; --toggle:#1C1B22;
   --p1b:#FFE9D2; --p1f:#9A4B0A; --p2b:#E6E6EF; --p2f:#4A4870; --p3b:#D8F3E3; --p3f:#1D6E43;
   --f-display:"Manrope","Segoe UI",system-ui,sans-serif;
   --f-body:"Onest","Segoe UI",system-ui,-apple-system,sans-serif;
@@ -132,6 +133,20 @@ figcaption .m{display:inline-block;width:12px;height:12px;border:2px solid var(-
 .done p{max-width:64ch;opacity:.92}
 .done ol{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px;max-width:64ch}
 .path .tag{align-self:flex-start;font:600 12px/1 var(--f-body);background:var(--soft);color:var(--brand);padding:6px 9px;border-radius:999px}
+.end a{color:inherit;font-weight:600}
+.support{position:fixed;right:calc(20px + env(safe-area-inset-right,0px));bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:50;display:flex;flex-direction:column;align-items:flex-end;gap:12px}
+.support-links{display:flex;flex-direction:column;align-items:flex-end;gap:12px}
+.support-links a{min-width:176px;display:flex;align-items:center;gap:12px;padding:8px 22px 8px 8px;border-radius:999px;color:#fff;text-decoration:none;font:600 17px/1 var(--f-body);box-shadow:0 8px 24px rgba(20,18,60,.18)}
+.support-links a .ic{width:40px;height:40px;border-radius:50%;background:#fff;display:grid;place-items:center;flex:none}
+.support-links a .ic svg{width:22px;height:22px}
+.sl-wa{background:var(--wa)}.sl-wa .ic svg{fill:var(--wa)}
+.sl-tg{background:var(--tg)}.sl-tg .ic svg{fill:var(--tg)}
+.support-toggle{width:60px;height:60px;border-radius:50%;border:0;background:var(--toggle);color:#fff;display:grid;place-items:center;cursor:pointer;box-shadow:0 8px 24px rgba(20,18,60,.25)}
+.support-toggle svg{width:26px;height:26px;stroke:#fff;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.support[data-open="false"] .support-links{display:none}
+.support .i-close{display:none}.support[data-open="true"] .i-close{display:block}.support[data-open="true"] .i-chat{display:none}
+@media (prefers-reduced-motion:no-preference){.support-links a{animation:pop .18s ease-out both}.support-links a:nth-child(2){animation-delay:.04s}}
+@keyframes pop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 .end{background:var(--brand);color:var(--brand-ink);border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:8px}
 .end h2{color:inherit}
 .end p{opacity:.9;max-width:60ch}
@@ -167,7 +182,7 @@ html{scroll-behavior:smooth}
       <li><a href="#after"><span class="n">✓</span>Что дальше</a></li>
       <li><a href="#faq"><span class="n">?</span>Вопросы и ответы</a></li>
     </ol>
-    <p class="help">Застряли на каком-то шаге? Напишите в чат поддержки: синяя кнопка в правом нижнем углу кабинета.</p>
+    <p class="help">Застряли на каком-то шаге? Напишите нам в <a href="https://wa.me/37122046801" target="_blank" rel="noopener">WhatsApp</a> или <a href="https://t.me/finboosupport" target="_blank" rel="noopener">Telegram</a>, мы поможем.</p>
   </aside>
 
   <main>
@@ -284,7 +299,7 @@ html{scroll-behavior:smooth}
         <ul>
           <li>Подходят <b>действующий паспорт или ID-карта</b>, признанные международно. Внутренние паспорта и водительские удостоверения не принимаются.</li>
           <li>Нужен <b>оригинал документа на руках</b>. Копии, сканы и фото с экрана не принимаются. Это самая частая причина отказа в верификации.</li>
-          <li>Если подходящего документа нет, напишите в чат поддержки, и мы предложим альтернативные способы верификации.</li>
+          <li>Если подходящего документа нет, напишите нам в <a href="https://wa.me/37122046801" target="_blank" rel="noopener">WhatsApp</a> или <a href="https://t.me/finboosupport" target="_blank" rel="noopener">Telegram</a>, и мы предложим альтернативные способы верификации.</li>
         </ul>
       </div>
       <ol class="steps">
@@ -463,8 +478,8 @@ html{scroll-behavior:smooth}
         <details><summary>Что делать с деньгами на балансе?</summary><div><p>Если при создании счёта вы выбрали «Баланс», деньги остаются в вашем кабинете Finboo. Вывести их можно вручную в разделе «Финансы» на любой добавленный способ вывода, целиком или частями.</p></div></details>
         <details><summary>В какой валюте можно выставить счёт?</summary><div><p>В EUR, USD, GBP и других валютах. Валюту вы выбираете для каждого счёта отдельно.</p></div></details>
         <details><summary>По какому курсу Finboo конвертирует валюту?</summary><div><p>Finboo не берёт дополнительную плату за конвертацию. Применяется публичный курс банка, Visa/Mastercard или платёжного провайдера, в зависимости от способа вывода.</p></div></details>
-        <details><summary>У меня нет подходящего документа. Как пройти верификацию?</summary><div><p>Напишите в чат поддержки. Мы предложим альтернативные способы верификации.</p></div></details>
-        <details><summary>Почему мне отказали в верификации?</summary><div><p>Чаще всего из-за того, что вместо оригинала документа использовали копию, скан или фото с экрана. Пройдите верификацию ещё раз с оригиналом действующего паспорта или ID-карты. Если отказ повторится, напишите в чат поддержки.</p></div></details>
+        <details><summary>У меня нет подходящего документа. Как пройти верификацию?</summary><div><p>Напишите нам в <a href="https://wa.me/37122046801" target="_blank" rel="noopener">WhatsApp</a> или <a href="https://t.me/finboosupport" target="_blank" rel="noopener">Telegram</a>. Мы предложим альтернативные способы верификации.</p></div></details>
+        <details><summary>Почему мне отказали в верификации?</summary><div><p>Чаще всего из-за того, что вместо оригинала документа использовали копию, скан или фото с экрана. Пройдите верификацию ещё раз с оригиналом действующего паспорта или ID-карты. Если отказ повторится, напишите нам в <a href="https://wa.me/37122046801" target="_blank" rel="noopener">WhatsApp</a> или <a href="https://t.me/finboosupport" target="_blank" rel="noopener">Telegram</a>.</p></div></details>
         <details><summary>Можно добавить несколько способов вывода?</summary><div><p>Да, сразу или позже: в разделе «Настройки → Способы вывода средств» или прямо при создании счёта. Для нового способа может понадобиться подписать новый договор.</p></div></details>
         <details><summary>Как отключить автоподписание актов?</summary><div><p>В настройках личного кабинета, в любой момент. После отключения каждый акт нужно будет подписывать вручную, и выплата будет ждать подписи.</p></div></details>
       </div>
@@ -472,9 +487,20 @@ html{scroll-behavior:smooth}
 
     <div class="end">
       <h2>Остались вопросы?</h2>
-      <p>Напишите в чат поддержки: синяя кнопка в правом нижнем углу личного кабинета. Мы поможем на любом шаге.</p>
+      <p>Напишите нам в <a href="https://wa.me/37122046801" target="_blank" rel="noopener">WhatsApp</a> или <a href="https://t.me/finboosupport" target="_blank" rel="noopener">Telegram</a>: кнопки связи есть в правом нижнем углу этой страницы. Мы поможем на любом шаге.</p>
     </div>
   </main>
+</div>
+
+<div class="support" id="support" data-open="false">
+  <div class="support-links" id="support-links">
+    <a class="sl-wa" href="https://wa.me/37122046801" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5a9.5 9.5 0 0 0-8.2 14.3L2.5 21.5l4.8-1.3A9.5 9.5 0 1 0 12 2.5Zm0 2a7.5 7.5 0 1 1-3.9 13.9l-.4-.2-2.3.6.6-2.2-.2-.4A7.5 7.5 0 0 1 12 4.5Zm-2.6 3.3c-.3 0-.6.1-.8.4-.3.3-.9.9-.9 2.1s.9 2.5 1 2.6c.1.2 1.8 2.8 4.4 3.8 2.1.8 2.6.7 3 .6.5 0 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.2-.2-.5-.3l-1.6-.8c-.2-.1-.4-.1-.6.1l-.7.9c-.1.2-.3.2-.5.1-.3-.1-1.1-.4-2-1.2-.7-.7-1.2-1.5-1.4-1.7-.1-.3 0-.4.1-.5l.4-.4.3-.4v-.4l-.7-1.8c-.2-.5-.4-.4-.5-.4h-.5Z"/></svg></span>WhatsApp</a>
+    <a class="sl-tg" href="https://t.me/finboosupport" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.7 4.3 2.9 11.2c-.9.4-.9 1.4 0 1.7l4.4 1.4 1.7 5.3c.2.7 1 .9 1.5.4l2.5-2.3 4.6 3.4c.6.4 1.4.1 1.6-.6l3-14.6c.2-1-.7-1.9-1.5-1.6Zm-3.1 3.6-7.9 7.2-.3 3-1.3-4.2 9.5-6Z"/></svg></span>Telegram</a>
+  </div>
+  <button class="support-toggle" id="support-toggle" type="button" aria-expanded="false" aria-controls="support-links" aria-label="Связаться с поддержкой">
+    <svg class="i-chat" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12a8 8 0 0 1-11.6 7.1L4 20l1-4.1A8 8 0 1 1 20 12Z"/><path d="M8.5 11h7M8.5 14h4.5"/></svg>
+    <svg class="i-close" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+  </button>
 </div>
 
 <dialog id="lb" aria-label="Скриншот крупно"><button type="button" id="lb-close">Закрыть ✕</button><img id="lb-img" alt=""></dialog>
@@ -488,6 +514,11 @@ html{scroll-behavior:smooth}
   });
   document.getElementById('lb-close').addEventListener('click',function(){lb.close();});
   lb.addEventListener('click',function(e){if(e.target===lb)lb.close();});
+
+  // support widget
+  var sup=document.getElementById('support'), st=document.getElementById('support-toggle');
+  st.addEventListener('click',function(){var o=sup.dataset.open!=='true';sup.dataset.open=o;st.setAttribute('aria-expanded',o);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&sup.dataset.open==='true'){sup.dataset.open='false';st.setAttribute('aria-expanded','false');}});
 
   // fee calculator (5%)
   var amt=document.getElementById('amt'), payer='me', R=0.05;
