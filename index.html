@@ -1,0 +1,525 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Старт в Finboo для фрилансера</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Onest:wght@400;500;600&display=swap">
+<style>
+/* Layout: sticky step rail on the left (desktop), one reading column with framed screenshots; collapses to a single column on phones */
+:root{
+  --bg:#F5F5FB; --surface:#FFFFFF; --ink:#16123F; --muted:#5E5B7E; --line:#DEDDEF;
+  --brand:#2337D1; --brand-ink:#FFFFFF; --soft:#ECEBFD; --mark:#F0552F;
+  --warn-bg:#FFF3E8; --warn-line:#F3B784; --warn-ink:#6B3510;
+  --ok:#2E9E61;
+  --p1b:#FFE9D2; --p1f:#9A4B0A; --p2b:#E6E6EF; --p2f:#4A4870; --p3b:#D8F3E3; --p3f:#1D6E43;
+  --f-display:"Manrope","Segoe UI",system-ui,sans-serif;
+  --f-body:"Onest","Segoe UI",system-ui,-apple-system,sans-serif;
+  --radius:14px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0F0E1D; --surface:#17162B; --ink:#ECEBFA; --muted:#A4A2C4; --line:#2C2B4A;
+  --brand:#8A93FF; --brand-ink:#0F0E1D; --soft:#22214A; --mark:#FF7A57;
+  --warn-bg:#2C1E12; --warn-line:#7A4A22; --warn-ink:#F6CFA8; --ok:#5BC98C; --p1b:#3A2612; --p1f:#FFC48F; --p2b:#2A2945; --p2f:#C9C7E6; --p3b:#163526; --p3f:#8BE0B0; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0F0E1D; --surface:#17162B; --ink:#ECEBFA; --muted:#A4A2C4; --line:#2C2B4A;
+  --brand:#8A93FF; --brand-ink:#0F0E1D; --soft:#22214A; --mark:#FF7A57;
+  --warn-bg:#2C1E12; --warn-line:#7A4A22; --warn-ink:#F6CFA8; --ok:#5BC98C; --p1b:#3A2612; --p1f:#FFC48F; --p2b:#2A2945; --p2f:#C9C7E6; --p3b:#163526; --p3f:#8BE0B0; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);overflow-wrap:break-word;font:400 16px/1.6 var(--f-body);-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding:48px 20px 96px;display:grid;grid-template-columns:240px minmax(0,1fr);gap:56px}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;letter-spacing:-.01em;margin:0}
+h1{font-size:clamp(30px,4.4vw,46px);line-height:1.1;font-weight:800}
+h2{font-size:clamp(24px,3vw,32px);line-height:1.2;font-weight:800}
+h3{font-size:19px;line-height:1.3;font-weight:700}
+p{margin:0}
+a{color:var(--brand)}
+b,strong{font-weight:600}
+.ui{font-weight:600;-webkit-box-decoration-break:clone;box-decoration-break:clone;background:var(--soft);padding:1px 7px;border-radius:6px;font-size:.94em}
+
+/* rail */
+.rail{position:sticky;top:calc(env(safe-area-inset-top,0px) + 24px);align-self:start;display:flex;flex-direction:column;gap:18px}
+.logo{font:800 26px/1 var(--f-display);color:var(--brand);letter-spacing:-.03em}
+.logo small{display:block;font:500 12px/1.4 var(--f-body);color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-top:6px}
+.toc{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px;border-left:2px solid var(--line)}
+.toc a{display:flex;gap:10px;align-items:baseline;padding:7px 12px;margin-left:-2px;border-left:2px solid transparent;color:var(--muted);text-decoration:none;font-size:14.5px;line-height:1.35}
+.toc a:hover{color:var(--ink)}
+.toc a.on{color:var(--ink);border-left-color:var(--brand);font-weight:600}
+.toc .n{font:700 12px/1 var(--f-display);color:var(--brand);min-width:16px;font-variant-numeric:tabular-nums}
+.help{font-size:13.5px;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:14px}
+
+main{min-width:0;display:flex;flex-direction:column;gap:88px}
+section{display:flex;flex-direction:column;gap:22px;scroll-margin-top:24px}
+.prose{max-width:66ch;display:flex;flex-direction:column;gap:14px;color:var(--ink)}
+.lead{font-size:19px;line-height:1.55;color:var(--muted);max-width:60ch}
+.eyebrow{font:600 12.5px/1 var(--f-body);letter-spacing:.09em;text-transform:uppercase;color:var(--brand)}
+.head{display:flex;flex-direction:column;gap:10px}
+
+/* hero */
+.hero{display:flex;flex-direction:column;gap:22px}
+.needs{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:6px}
+.need{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:14.5px;line-height:1.45}
+.need b{display:block;font-size:15px;margin-bottom:2px}
+.paths{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.path{display:flex;flex-direction:column;gap:8px;padding:20px;border-radius:var(--radius);background:var(--surface);border:1px solid var(--line);text-decoration:none;color:var(--ink);transition:border-color .15s,transform .15s}
+.path:hover,.path:focus-visible{border-color:var(--brand);transform:translateY(-2px)}
+.path .t{font:700 18px/1.3 var(--f-display)}
+.path .d{color:var(--muted);font-size:14.5px;line-height:1.5}
+.path .go{color:var(--brand);font-weight:600;font-size:14.5px;margin-top:auto}
+
+/* checklist meter */
+.meter{display:flex;gap:6px;align-items:center;font:600 13px/1 var(--f-body);color:var(--muted)}
+.meter i{display:block;width:26px;height:6px;border-radius:3px;background:var(--line)}
+.meter i.f{background:var(--ok)}
+
+/* steps */
+.steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:34px;counter-reset:s}
+.step{counter-increment:s;min-width:0}
+.step>div{display:flex;flex-direction:column;gap:14px;min-width:0}
+.step>div>:first-child::before{content:counter(s);display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:var(--soft);color:var(--brand);font:800 14px/1 var(--f-display);margin-right:10px;vertical-align:1px;flex:none}
+.step p,.step ul{max-width:68ch}
+ul.fields{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:4px}
+ul.fields li::marker{color:var(--brand)}
+
+figure{margin:0;display:flex;flex-direction:column;gap:8px}
+.shot{display:block;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--surface);cursor:zoom-in;padding:0;width:100%;text-align:left}
+.shot img{display:block;width:100%;height:auto}
+figcaption{font-size:13.5px;color:var(--muted);line-height:1.45}
+figcaption .m{display:inline-block;width:12px;height:12px;border:2px solid var(--mark);border-radius:4px;vertical-align:-1px;margin-right:6px}
+
+.note,.warn{border-radius:12px;padding:14px 16px;font-size:15px;line-height:1.5;max-width:70ch;display:flex;flex-direction:column;gap:6px}
+.note{background:var(--soft);color:var(--ink)}
+.warn{background:var(--warn-bg);border:1px solid var(--warn-line);color:var(--warn-ink)}
+.note b,.warn b{font-weight:600}
+.warn ul,.note ul{margin:0;padding-left:20px}
+
+/* fee calculator */
+.calc{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:20px;display:flex;flex-direction:column;gap:16px;max-width:760px}
+.calc-row{display:flex;flex-wrap:wrap;gap:12px 18px;align-items:end}
+.calc label{display:flex;flex-direction:column;gap:6px;font-size:13px;color:var(--muted)}
+.calc input[type=number]{font:600 18px/1 var(--f-body);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 12px;width:160px}
+.seg{display:flex;flex-wrap:wrap;gap:6px}
+.seg button{font:500 14px/1 var(--f-body);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:10px 14px;cursor:pointer}
+.seg button[aria-pressed=true]{background:var(--brand);color:var(--brand-ink);border-color:var(--brand)}
+.out{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px}
+.out div{background:var(--bg);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:4px}
+.out span{font-size:12.5px;color:var(--muted)}
+.out strong{font:700 20px/1.2 var(--f-display);font-variant-numeric:tabular-nums}
+.out .you strong{color:var(--brand)}
+.calc small{color:var(--muted);font-size:13px}
+:focus-visible{outline:3px solid var(--brand);outline-offset:2px;border-radius:6px}
+
+/* statuses */
+.status{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.status div{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:8px;font-size:14.5px;line-height:1.5}
+.pill{align-self:flex-start;font:600 13px/1 var(--f-body);padding:6px 10px;border-radius:999px}
+.p1{background:var(--p1b);color:var(--p1f)}.p2{background:var(--p2b);color:var(--p2f)}.p3{background:var(--p3b);color:var(--p3f)}
+
+/* faq */
+.faq{display:flex;flex-direction:column;border-top:1px solid var(--line);max-width:780px}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{cursor:pointer;list-style:none;padding:16px 36px 16px 0;font:600 16.5px/1.4 var(--f-body);position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:6px;top:12px;font:400 24px/1 var(--f-body);color:var(--brand)}
+.faq details[open] summary::after{content:"–"}
+.faq details>div{padding:0 0 18px;color:var(--ink);display:flex;flex-direction:column;gap:10px;max-width:66ch}
+
+.done{background:var(--brand);color:var(--brand-ink);border-radius:20px;padding:26px 28px;display:flex;flex-direction:column;gap:12px}
+.done h3{font-size:22px;color:inherit}
+.done p{max-width:64ch;opacity:.92}
+.done ol{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px;max-width:64ch}
+.path .tag{align-self:flex-start;font:600 12px/1 var(--f-body);background:var(--soft);color:var(--brand);padding:6px 9px;border-radius:999px}
+.end{background:var(--brand);color:var(--brand-ink);border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:8px}
+.end h2{color:inherit}
+.end p{opacity:.9;max-width:60ch}
+
+dialog{border:0;padding:0;background:transparent;max-width:min(1400px,96vw)}
+dialog::backdrop{background:rgba(10,9,30,.82)}
+dialog img{display:block;max-width:100%;max-height:90vh;border-radius:10px}
+dialog button{position:fixed;top:calc(env(safe-area-inset-top,0px) + 14px);right:16px;font:600 15px/1 var(--f-body);background:#fff;color:#16123F;border:0;border-radius:999px;padding:10px 16px;cursor:pointer}
+
+@media (max-width:900px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:36px;padding-top:28px}
+  .rail{position:static}
+  .toc{display:none}
+  .help{display:none}
+  main{gap:64px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+html{scroll-behavior:smooth}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <aside class="rail">
+    <div class="logo">finboo<small>Гайд для фрилансеров</small></div>
+    <ol class="toc" id="toc">
+      <li><a href="#start"><span class="n">→</span>Регистрация</a></li>
+      <li><a href="#kyc"><span class="n">1</span>Профиль (KYC)</a></li>
+      <li><a href="#verify"><span class="n">2</span>Верификация</a></li>
+      <li><a href="#payout"><span class="n">3</span>Способ вывода</a></li>
+      <li><a href="#contract"><span class="n">4</span>Договор</a></li>
+      <li><a href="#invoice"><span class="n">5</span>Первый счёт</a></li>
+      <li><a href="#after"><span class="n">✓</span>Что дальше</a></li>
+      <li><a href="#faq"><span class="n">?</span>Вопросы и ответы</a></li>
+    </ol>
+    <p class="help">Застряли на каком-то шаге? Напишите в чат поддержки: синяя кнопка в правом нижнем углу кабинета.</p>
+  </aside>
+
+  <main>
+    <header class="hero">
+      <span class="eyebrow">Начало работы</span>
+      <h1>Как начать работать через Finboo</h1>
+      <p class="lead">Пройдите пять шагов чеклиста «Начните» в личном кабинете, и вы сможете получать выплаты и выставлять счета клиентам по всему миру. Обычно это занимает 15–20 минут.</p>
+      <div class="needs">
+        <div class="need"><b>Документ</b>Действующий паспорт или ID-карта. Нужен оригинал: копии и сканы не подойдут.</div>
+        <div class="need"><b>Смартфон</b>Нужен для верификации личности, даже если вы регистрируетесь с компьютера.</div>
+        <div class="need"><b>Налоговый номер</b>Tax ID страны, где вы налоговый резидент. Номер VAT, если он есть.</div>
+        <div class="need"><b>Реквизиты</b>IBAN, номер карты, кошелёк или аккаунт PayPal, Payoneer, Wise, Revolut.</div>
+      </div>
+    </header>
+
+    <section id="start">
+      <div class="head">
+        <span class="eyebrow">Регистрация</span>
+        <h2>Регистрация в Finboo</h2>
+        <p class="lead">Зарегистрироваться можно по приглашению компании или самостоятельно. Отличается только первый шаг, дальше всё одинаково.</p>
+      </div>
+      <div class="paths">
+        <a class="path" href="#invited"><span class="t">Меня пригласила компания</span><span class="d">Вам пришло письмо «Invitation to join … on Finboo» от компании, с которой вы работаете. Вам нужно пройти шаги 1–4, счета выставлять не обязательно.</span><span class="go">Смотреть шаги ↓</span></a>
+        <a class="path" href="#self"><span class="t">Регистрируюсь сам</span><span class="d">Вы хотите выставлять счета своим клиентам через Finboo. Вам нужны все пять шагов.</span><span class="go">Смотреть шаги ↓</span></a>
+      </div>
+
+      <div class="head" id="invited" style="scroll-margin-top:24px"><h3>Если вас пригласила компания</h3></div>
+      <ol class="steps">
+        <li class="step"><div>
+          <p>Откройте письмо от Finboo (<span class="ui">info@finboo.io</span>) и нажмите <span class="ui">Join the Team</span>. Откроется обычная форма регистрации.</p>
+          <figure><button class="shot" type="button"><img src="img/01-invite-email.webp" alt="Письмо-приглашение от компании с кнопкой Join the Team" loading="lazy"></button>
+          <figcaption><span class="m"></span>Письмо-приглашение. Если не видите его во «Входящих», проверьте папку «Спам».</figcaption></figure>
+        </div></li>
+        <li class="step"><div>
+          <p>Зарегистрируйтесь, как описано ниже. Приглашение от компании появится в кабинете уже после регистрации, в колокольчике уведомлений. Как его принять, описано <a href="#accept">в конце раздела</a>.</p>
+        </div></li>
+      </ol>
+
+      <div class="head" id="self" style="scroll-margin-top:24px"><h3>Регистрация</h3></div>
+      <ol class="steps">
+        <li class="step"><div>
+          <p>Выберите удобный способ: <span class="ui">Continue with Google</span> или форма. В форме укажите имя, фамилию, email и пароль. Пароль должен содержать строчные и прописные буквы, цифры и не меньше 8 символов. Нажмите <span class="ui">Зарегистрироваться бесплатно</span>.</p>
+          <figure><button class="shot" type="button"><img src="img/02-signup.webp" alt="Форма «Создайте аккаунт фрилансера»" loading="lazy"></button></figure>
+        </div></li>
+        <li class="step"><div>
+          <p>Ответьте на короткий опрос из пяти вопросов. Он помогает нам понять, как вы работаете, и подсказать подходящие функции.</p>
+          <figure><button class="shot" type="button"><img src="img/03-welcome.webp" alt="Окно «Добро пожаловать в Finboo!» с кнопкой Продолжить" loading="lazy"></button></figure>
+        </div></li>
+        <li class="step"><div>
+          <p>После опроса откроется главная страница кабинета с чеклистом <b>«Начните · 0/5 шагов»</b>. Шаги открываются по порядку: например, договор станет доступен только после того, как вы добавите способ вывода. Нажимайте стрелку справа от шага, чтобы перейти к нему.</p>
+          <div class="meter" aria-label="Пройдено 0 из 5 шагов"><i></i><i></i><i></i><i></i><i></i>&nbsp;0/5</div>
+          <figure><button class="shot" type="button"><img src="img/04-dashboard.webp" alt="Главная страница с чеклистом из пяти шагов и колокольчиком уведомлений" loading="lazy"></button>
+          <figcaption><span class="m"></span>Колокольчик уведомлений. Сюда приходит приглашение от компании.</figcaption></figure>
+        </div></li>
+      </ol>
+
+      <div class="note" id="accept" style="scroll-margin-top:24px">
+        <b>Как принять приглашение компании</b>
+        <p>Нажмите на колокольчик в правом верхнем углу: там будет уведомление о том, что компания приглашает вас присоединиться. Откройте его и подтвердите приглашение. Компания появится в разделе <span class="ui">Клиенты</span>, и при выставлении счёта её не придётся заполнять вручную.</p>
+      </div>
+      <figure><button class="shot" type="button"><img src="img/23-clients.webp" alt="Раздел «Клиенты»: компания Demo Co Inc со статусом Active" loading="lazy"></button>
+      <figcaption><span class="m"></span>После подтверждения приглашения компания появляется в списке клиентов со статусом Active.</figcaption></figure>
+    </section>
+
+    <section id="kyc">
+      <div class="head">
+        <span class="eyebrow">Шаг 1 из 5</span>
+        <h2>Заполните профиль (форма KYC)</h2>
+        <p class="lead">Эти данные попадут в ваш договор, счета и закрывающие документы. Нажмите стрелку у пункта «Заполните форму KYC»: откроется раздел <b>Настройки → Профиль</b>.</p>
+      </div>
+      <ol class="steps">
+        <li class="step"><div>
+          <h3>Налоговая резиденция</h3>
+          <p>Нажмите <span class="ui">Добавить налоговую резиденцию</span> и заполните поля. Набор полей зависит от страны:</p>
+          <ul class="fields"><li><b>Страна</b>, обязательно;</li><li><b>Налоговый номер (Tax ID)</b>, например ИНН для России или NIF для Испании;</li><li><b>Статус занятости</b>, обязательно: например, «Самозанятый»;</li><li><b>Номер VAT</b>, если он у вас есть.</li></ul>
+          <figure><button class="shot" type="button"><img src="img/06-tax-modal.webp" alt="Окно «Добавить налоговую резиденцию»" loading="lazy"></button></figure>
+          <p>Если вы налоговый резидент нескольких стран и хотите получать выплаты в каждую из них, добавьте все резиденции. Статус занятости, налоговый режим и VAT задаются для каждой страны отдельно. Мы используем эти данные только для подготовки документов и ничего не передаём в налоговые органы.</p>
+          <figure><button class="shot" type="button"><img src="img/07-tax-filled.webp" alt="Добавлены две налоговые резиденции: Испания и Россия" loading="lazy"></button>
+          <figcaption>Пример с двумя резиденциями. Ещё одну можно добавить кнопкой ниже.</figcaption></figure>
+        </div></li>
+        <li class="step"><div>
+          <h3>Адрес проживания</h3>
+          <p>Нажмите <span class="ui">Добавить адрес</span> и укажите адрес, по которому вы живёте. Он указывается в ваших документах. Если ваш банк или платёжный сервис находится в другой стране, добавьте второй адрес в этой стране.</p>
+          <figure><button class="shot" type="button"><img src="img/09-address-filled.webp" alt="Блок «Адреса проживания» с добавленным адресом" loading="lazy"></button></figure>
+        </div></li>
+        <li class="step"><div>
+          <h3>Персональные данные и сфера деятельности</h3>
+          <p>Укажите фамилию, имя и отчество кириллицей и латиницей. Латиница подставится автоматически, проверьте её. Добавьте номер телефона. Email уже привязан к аккаунту, его заполнять не нужно.</p>
+          <p>Выберите <b>сферу деятельности</b> из каталога: найдите самую близкую к вашей работе. Затем сохраните профиль.</p>
+          <figure><button class="shot" type="button"><img src="img/10-personal.webp" alt="Блоки «Персональные данные» и «Сфера деятельности»" loading="lazy"></button></figure>
+        </div></li>
+        <li class="step"><div>
+          <p>Появится окно «Профиль обновлён». Нажмите <span class="ui">Открыть чеклист</span>, чтобы перейти к следующему шагу.</p>
+          <figure><button class="shot" type="button"><img src="img/11-profile-updated.webp" alt="Окно «Профиль обновлён»" loading="lazy"></button></figure>
+        </div></li>
+      </ol>
+      <div class="warn">
+        <b>Если вы получаете выплаты в Россию</b>
+        <ul>
+          <li>Для выплат в Россию укажите <b>российский адрес</b>. Для выплат в любую другую страну нужен адрес за пределами РФ. При необходимости добавьте оба адреса.</li>
+          <li>Налоговым резидентам России обязательно указывать ФИО кириллицей.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="verify">
+      <div class="head">
+        <span class="eyebrow">Шаг 2 из 5</span>
+        <h2>Пройдите верификацию</h2>
+        <p class="lead">Проверка личности защищает ваши операции и нужна по требованиям законодательства. Она проходит через сервис Veriff и обычно занимает пару минут.</p>
+      </div>
+      <div class="warn">
+        <b>Подготовьте документ заранее</b>
+        <ul>
+          <li>Подходят <b>действующий паспорт или ID-карта</b>, признанные международно. Внутренние паспорта и водительские удостоверения не принимаются.</li>
+          <li>Нужен <b>оригинал документа на руках</b>. Копии, сканы и фото с экрана не принимаются. Это самая частая причина отказа в верификации.</li>
+          <li>Если подходящего документа нет, напишите в чат поддержки, и мы предложим альтернативные способы верификации.</li>
+        </ul>
+      </div>
+      <ol class="steps">
+        <li class="step"><div>
+          <p>На главной странице нажмите стрелку у пункта <b>«Верификация»</b>.</p>
+          <figure><button class="shot" type="button"><img src="img/12-dash-verify.webp" alt="Чеклист 1/5, выделен пункт Верификация" loading="lazy"></button></figure>
+        </div></li>
+        <li class="step"><div>
+          <p>Верификация проходит на смартфоне. Если вы работаете с компьютера, отсканируйте телефоном QR-код или введите номер телефона: придёт SMS с защищённой ссылкой.</p>
+          <figure><button class="shot" type="button"><img src="img/13-veriff.webp" alt="Экран Veriff: QR-код или ссылка по SMS" loading="lazy"></button>
+          <figcaption>QR-код на изображении скрыт: у каждого пользователя он свой.</figcaption></figure>
+        </div></li>
+        <li class="step"><div>
+          <p>На телефоне сделайте селфи и сфотографируйте документ. После проверки у шага на главной странице появится зелёная галочка.</p>
+        </div></li>
+      </ol>
+    </section>
+
+    <section id="payout">
+      <div class="head">
+        <span class="eyebrow">Шаг 3 из 5</span>
+        <h2>Добавьте способ вывода</h2>
+        <p class="lead">На этот способ Finboo будет отправлять ваши деньги. После того как вы его добавите, вам станут доступны выплаты.</p>
+      </div>
+      <ol class="steps">
+        <li class="step"><div>
+          <p>Нажмите стрелку у пункта <b>«Добавить способ вывода»</b>.</p>
+          <figure><button class="shot" type="button"><img src="img/14-dash-payout.webp" alt="Чеклист 2/5, выделен пункт «Добавить способ вывода»" loading="lazy"></button></figure>
+        </div></li>
+        <li class="step"><div>
+          <p>Выберите вариант: банковский счёт, номер карты, криптокошелёк (USDT, USDC), PayPal, Payoneer и другие. Можно сразу добавить несколько способов или вернуться к этому позже в разделе <b>Настройки → Способы вывода средств</b>.</p>
+          <figure><button class="shot" type="button"><img src="img/15-payout-methods.webp" alt="Список способов вывода" loading="lazy"></button></figure>
+        </div></li>
+        <li class="step"><div>
+          <p>Для банковского счёта выберите страну и валюту, введите IBAN или номер счёта, код BIC/SWIFT и название банка. Нажмите <span class="ui">Сохранить</span>.</p>
+          <figure><button class="shot" type="button"><img src="img/16-bank-form.webp" alt="Форма банковского счёта: страна, валюта, IBAN, BIC/SWIFT, название банка" loading="lazy"></button></figure>
+        </div></li>
+        <li class="step"><div>
+          <p>Способ вывода сохранён. В открывшемся окне нажмите <span class="ui">Ознакомиться и подписать</span>, чтобы перейти к договору.</p>
+          <figure><button class="shot" type="button"><img src="img/17-payout-added.webp" alt="Окно «Способ выплаты добавлен!»" loading="lazy"></button></figure>
+        </div></li>
+      </ol>
+      <div class="note"><p>Выплаты идут по вашему договору с Finboo, который выпускается под способ выплаты. Поэтому новый способ вывода может потребовать подписать новый договор.</p></div>
+    </section>
+
+    <section id="contract">
+      <div class="head">
+        <span class="eyebrow">Шаг 4 из 5</span>
+        <h2>Подпишите договор</h2>
+        <p class="lead">Это «Договор с независимым субподрядчиком» (Framework Services Agreement) между вами и Finboo Limited. На его основании вы получаете выплаты, а после подписания сможете выставлять счета.</p>
+      </div>
+      <ol class="steps">
+        <li class="step"><div>
+          <p>Прочитайте договор, пролистайте его вниз и нажмите <span class="ui">Sign now</span>.</p>
+          <figure><button class="shot" type="button"><img src="img/18-contract.webp" alt="Договор с кнопкой Sign now и галочкой автоподписания актов" loading="lazy"></button></figure>
+          <div class="note">
+            <b>Галочка «Автоматически подписывать мои будущие акты выполненных работ»</b>
+            <p>Мы рекомендуем её включить: тогда деньги поступают вам сразу и не ждут, пока вы вручную подпишете акт. О каждом акте придёт уведомление, на возражения у вас будет 5 рабочих дней. Автоподписание касается только актов, договоры оно не затрагивает. Отключить его можно в настройках в любой момент.</p>
+          </div>
+        </div></li>
+        <li class="step"><div>
+          <p>Поставьте подпись: нарисуйте её в поле, напечатайте своё имя (<span class="ui">Type</span>) или загрузите изображение вашей подписи (<span class="ui">Upload</span>). Нажмите <span class="ui">Sign and complete</span>.</p>
+          <figure><button class="shot" type="button"><img src="img/19-signature.webp" alt="Окно подписи: нарисовать, напечатать или загрузить" loading="lazy"></button></figure>
+        </div></li>
+        <li class="step"><div>
+          <p>Готово. Подписанный договор хранится в разделе <span class="ui">Документы</span>, здесь же его можно скачать в PDF и посмотреть журнал подписания.</p>
+          <figure><button class="shot" type="button"><img src="img/20-signed.webp" alt="Окно «Договор подписан!» с кнопкой «Создать счет»" loading="lazy"></button></figure>
+        </div></li>
+      </ol>
+      <div class="done" id="invited-done">
+        <span class="eyebrow" style="color:inherit;opacity:.8">Вас пригласила компания?</span>
+        <h3>На этом всё: остаётся ждать выплату</h3>
+        <p>Если вы работаете с компанией, которая прислала вам приглашение, выставлять счета не нужно. Компания сама формирует для вас выплату.</p>
+        <ol>
+          <li>Компания создаёт выплату в Finboo.</li>
+          <li>Вам приходит уведомление в кабинете.</li>
+          <li>Деньги поступают на ваш способ вывода или на баланс.</li>
+        </ol>
+        <p>Шаг 5 понадобится, только если вы захотите выставить счёт своему клиенту.</p>
+      </div>
+    </section>
+
+    <section id="invoice">
+      <div class="head">
+        <span class="eyebrow">Шаг 5 из 5</span>
+        <h2>Выставьте первый счёт</h2>
+        <p class="lead">Счёт выставляется от имени Finboo Limited (Кипр): клиент платит Finboo, а Finboo переводит деньги вам. Создание счёта занимает три экрана: клиент, услуга, оплата.</p>
+      </div>
+      <ol class="steps">
+        <li class="step"><div>
+          <p>Откройте раздел <span class="ui">Счета</span> в боковом меню, или нажмите «Создать счет» в чеклисте, или кнопку в окне «Договор подписан!». Нажмите <span class="ui">Создать первый счёт</span>.</p>
+          <figure><button class="shot" type="button"><img src="img/22-invoices-empty.webp" alt="Раздел «Счета» с кнопкой «Создать первый счёт»" loading="lazy"></button></figure>
+        </div></li>
+        <li class="step"><div>
+          <h3>Данные клиента</h3>
+          <p>Выберите клиента из списка. Компания, которая вас пригласила, уже будет в нём. Для нового клиента нажмите <span class="ui">Добавить нового</span>.</p>
+          <figure><button class="shot" type="button"><img src="img/24-select-client.webp" alt="Выпадающий список клиентов с пунктом «Добавить нового»" loading="lazy"></button></figure>
+          <p>Для нового клиента заполните реквизиты компании:</p>
+          <ul class="fields"><li>название компании, страна, город;</li><li>адрес регистрации и индекс;</li><li>регистрационный номер компании;</li><li>VAT-номер: обязателен, если клиент зарегистрирован в ЕС.</li></ul>
+          <figure><button class="shot" type="button"><img src="img/25-new-client.webp" alt="Форма нового клиента" loading="lazy"></button>
+          <figcaption>Клиентов также можно заранее добавить в разделе «Клиенты» кнопкой «+».</figcaption></figure>
+        </div></li>
+        <li class="step"><div>
+          <h3>Детали задачи</h3>
+          <p>Выберите <b>категорию</b> услуги. По желанию кратко опишите работу, например «Разработка стратегии email-маркетинга». Эти данные попадут в счёт и закрывающие документы. Нажмите <span class="ui">Продолжить</span>.</p>
+          <figure><button class="shot" type="button"><img src="img/26-task.webp" alt="Шаг «Детали задачи»: категория и описание" loading="lazy"></button></figure>
+        </div></li>
+        <li class="step"><div>
+          <h3>Платёжные данные</h3>
+          <p><b>Дата счёта</b> и <b>срок оплаты</b> заполнены автоматически (сегодня и через неделю), при необходимости их можно изменить. Выберите валюту счёта и введите сумму.</p>
+          <p><b>Способ вывода</b>: куда Finboo отправит деньги после оплаты.</p>
+          <ul class="fields">
+            <li><b>Баланс</b>: деньги поступят в ваш кабинет Finboo. Оттуда их можно вывести вручную в любой момент, в том числе частями на разные способы вывода.</li>
+            <li><b>Сохранённые реквизиты</b> (например, банковский счёт): деньги уйдут на них автоматически.</li>
+            <li><b>Добавить новый</b>: если нужных реквизитов ещё нет.</li>
+          </ul>
+          <figure><button class="shot" type="button"><img src="img/27-payout-choice.webp" alt="Выбор способа вывода: Баланс или банковский счёт" loading="lazy"></button></figure>
+        </div></li>
+        <li class="step"><div>
+          <h3>Кто платит комиссию</h3>
+          <p>Выберите, кто оплачивает комиссию сервиса: <b>вы</b>, <b>клиент</b> или вы оба <b>пополам</b>. Внизу формы вы сразу увидите сумму счёта, комиссию и сумму, которую получите. Если выплату для вас формирует сама компания, этот выбор делает она.</p>
+          <figure><button class="shot" type="button"><img src="img/28-fees.webp" alt="Выбор плательщика комиссии и итоговые суммы" loading="lazy"></button></figure>
+          <div class="calc" aria-labelledby="calc-t">
+            <h3 id="calc-t">Посчитайте пример</h3>
+            <div class="calc-row">
+              <label for="amt">Сумма за работу, EUR<input id="amt" type="number" min="0" step="50" value="1000" inputmode="decimal"></label>
+              <div class="seg" role="group" aria-label="Кто платит комиссию">
+                <button type="button" data-p="me" aria-pressed="true">Я</button>
+                <button type="button" data-p="client" aria-pressed="false">Мой клиент</button>
+                <button type="button" data-p="split" aria-pressed="false">Пополам</button>
+              </div>
+            </div>
+            <div class="out">
+              <div><span>Сумма счёта клиенту</span><strong id="o-inv">1 000,00</strong></div>
+              <div><span>Комиссия сервиса, 5%</span><strong id="o-fee">50,00</strong></div>
+              <div class="you"><span>Вы получите</span><strong id="o-you">950,00</strong></div>
+            </div>
+            <small>Расчёт для примера при ставке 5%. Точные суммы вы увидите в форме перед выставлением счёта.</small>
+          </div>
+        </div></li>
+        <li class="step"><div>
+          <h3>Проверьте и выставьте счёт</h3>
+          <p>Проверьте номер счёта (он присваивается автоматически), даты, валюту, свои реквизиты и реквизиты клиента. Нажмите <span class="ui">Выставить счёт</span>.</p>
+          <figure><button class="shot" type="button"><img src="img/29-preview.webp" alt="Предпросмотр счёта с кнопкой «Выставить счёт»" loading="lazy"></button></figure>
+        </div></li>
+        <li class="step"><div>
+          <h3>Отправьте счёт клиенту</h3>
+          <p>Нажмите <span class="ui">Скачать</span> и отправьте PDF клиенту удобным способом: по email, в мессенджере и т.&nbsp;п. Клиент может оплатить счёт банковским переводом или криптовалютой: реквизиты уже указаны в PDF.</p>
+          <figure><button class="shot" type="button"><img src="img/30-statuses.webp" alt="Счёт выставлен: статусы и кнопка «Скачать»" loading="lazy"></button></figure>
+          <div class="warn"><p><b>Важно для клиента:</b> при банковском переводе нужно указать номер счёта (Reference Number, например <span class="ui">BQJAA-001-26</span>) в назначении платежа. Иначе платёж может не найтись.</p></div>
+        </div></li>
+      </ol>
+    </section>
+
+    <section id="after">
+      <div class="head">
+        <span class="eyebrow">После выставления</span>
+        <h2>Что дальше</h2>
+        <p class="lead">Статус счёта отображается в разделе «Счета». Когда деньги придут, в кабинете появится уведомление.</p>
+      </div>
+      <div class="status">
+        <div><span class="pill p1">Выставлен</span><p>Счёт создан. Скачайте его и отправьте клиенту, если ещё не сделали этого.</p></div>
+        <div><span class="pill p2">В обработке</span><p>Клиент оплатил счёт, платёж идёт к Finboo. Срок зависит от страны клиента, банка, валюты и способа оплаты.</p></div>
+        <div><span class="pill p3">Выплачено</span><p>Finboo отправил деньги на ваш способ вывода или на баланс в течение 24 часов после поступления оплаты.</p></div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="head">
+        <span class="eyebrow">FAQ</span>
+        <h2>Вопросы и ответы</h2>
+      </div>
+      <div class="faq">
+        <details><summary>Как клиент оплачивает счёт?</summary><div><p>Клиент получает от вас PDF-счёт, выставленный от имени Finboo Limited. В нём указаны банковские реквизиты для перевода (SEPA, SWIFT) и ссылка для оплаты криптовалютой. При банковском переводе клиенту нужно указать номер счёта в назначении платежа.</p></div></details>
+        <details><summary>Когда я получу деньги?</summary><div><p>Сначала клиент переводит оплату в Finboo. В среднем это занимает 1–3 дня, но срок зависит от страны клиента, банка, валюты, количества банков-посредников и способа оплаты.</p><p>Как только деньги поступают к нам, мы отправляем их вам в течение 24 часов. Если выплата задерживается из-за проверок банка или по другим причинам, мы сообщим об этом.</p></div></details>
+        <details><summary>Что делать с деньгами на балансе?</summary><div><p>Если при создании счёта вы выбрали «Баланс», деньги остаются в вашем кабинете Finboo. Вывести их можно вручную в разделе «Финансы» на любой добавленный способ вывода, целиком или частями.</p></div></details>
+        <details><summary>В какой валюте можно выставить счёт?</summary><div><p>В EUR, USD, GBP и других валютах. Валюту вы выбираете для каждого счёта отдельно.</p></div></details>
+        <details><summary>По какому курсу Finboo конвертирует валюту?</summary><div><p>Finboo не берёт дополнительную плату за конвертацию. Применяется публичный курс банка, Visa/Mastercard или платёжного провайдера, в зависимости от способа вывода.</p></div></details>
+        <details><summary>У меня нет подходящего документа. Как пройти верификацию?</summary><div><p>Напишите в чат поддержки. Мы предложим альтернативные способы верификации.</p></div></details>
+        <details><summary>Почему мне отказали в верификации?</summary><div><p>Чаще всего из-за того, что вместо оригинала документа использовали копию, скан или фото с экрана. Пройдите верификацию ещё раз с оригиналом действующего паспорта или ID-карты. Если отказ повторится, напишите в чат поддержки.</p></div></details>
+        <details><summary>Можно добавить несколько способов вывода?</summary><div><p>Да, сразу или позже: в разделе «Настройки → Способы вывода средств» или прямо при создании счёта. Для нового способа может понадобиться подписать новый договор.</p></div></details>
+        <details><summary>Как отключить автоподписание актов?</summary><div><p>В настройках личного кабинета, в любой момент. После отключения каждый акт нужно будет подписывать вручную, и выплата будет ждать подписи.</p></div></details>
+      </div>
+    </section>
+
+    <div class="end">
+      <h2>Остались вопросы?</h2>
+      <p>Напишите в чат поддержки: синяя кнопка в правом нижнем углу личного кабинета. Мы поможем на любом шаге.</p>
+    </div>
+  </main>
+</div>
+
+<dialog id="lb" aria-label="Скриншот крупно"><button type="button" id="lb-close">Закрыть ✕</button><img id="lb-img" alt=""></dialog>
+
+<script>
+(function(){
+  // lightbox
+  var lb=document.getElementById('lb'), li=document.getElementById('lb-img');
+  document.querySelectorAll('.shot').forEach(function(b){
+    b.addEventListener('click',function(){var i=b.querySelector('img');li.src=i.src;li.alt=i.alt;if(lb.showModal)lb.showModal();});
+  });
+  document.getElementById('lb-close').addEventListener('click',function(){lb.close();});
+  lb.addEventListener('click',function(e){if(e.target===lb)lb.close();});
+
+  // fee calculator (5%)
+  var amt=document.getElementById('amt'), payer='me', R=0.05;
+  var fmt=function(n){return n.toLocaleString('ru-RU',{minimumFractionDigits:2,maximumFractionDigits:2});};
+  function calc(){
+    var a=Math.max(0,parseFloat(amt.value)||0), inv, you, fee;
+    if(payer==='me'){inv=a;fee=a*R;you=a-fee;}
+    else if(payer==='client'){fee=a*R;inv=a+fee;you=a;}
+    else{fee=a*R;inv=a+fee/2;you=a-fee/2;}
+    document.getElementById('o-inv').textContent=fmt(inv);
+    document.getElementById('o-fee').textContent=fmt(fee);
+    document.getElementById('o-you').textContent=fmt(you);
+  }
+  amt.addEventListener('input',calc);
+  document.querySelectorAll('.seg button').forEach(function(b){
+    b.addEventListener('click',function(){
+      payer=b.dataset.p;
+      document.querySelectorAll('.seg button').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});
+      calc();
+    });
+  });
+  calc();
+
+  // scrollspy
+  var links=[].slice.call(document.querySelectorAll('#toc a'));
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ links.forEach(function(l){l.classList.toggle('on',l.getAttribute('href')==='#'+e.target.id);}); } });
+    },{rootMargin:'-30% 0px -60% 0px'});
+    links.forEach(function(l){var s=document.querySelector(l.getAttribute('href')); if(s) io.observe(s);});
+  }
+})();
+</script>
+</body>
+</html>
