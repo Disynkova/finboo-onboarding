@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<link rel="alternate" hreflang="en" href="?lang=en">
 <title>Старт в Finboo для фрилансера</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -47,6 +48,10 @@ mark{color:#fff;padding:0 .28em;border-radius:10px;background:linear-gradient(va
 .topbar-in{max-width:1240px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px}
 .brand svg{display:block;width:118px;height:auto}
 .top-actions{display:flex;align-items:center;gap:10px}
+[hidden]{display:none!important}
+.lang{display:flex;background:var(--card);border-radius:12px;padding:3px;box-shadow:0 0 0 1px var(--beige)}
+.lang button{border:0;background:transparent;font:700 13px/1 var(--f-body);color:var(--muted);padding:9px 11px;border-radius:9px;cursor:pointer;letter-spacing:.04em}
+.lang button[aria-pressed=true]{background:var(--ink);color:#fff}
 .btn-sm.btn-ghost{box-shadow:0 0 0 1px var(--beige)}
 .top-actions .btn:not(.btn-ghost){min-width:96px}
 
@@ -200,12 +205,12 @@ dialog button{position:fixed;top:calc(env(safe-area-inset-top,0px) + 14px);right
 <body>
 
 
-<header class="topbar"><div class="topbar-in"><a class="brand" href="#top" aria-label="Finboo, к началу гайда"><svg viewBox="262 255 1625 420" role="img" aria-label="Finboo" fill="#323232"><path d="M572.7,341.46c23.58,0,38.22-13.37,38.22-34.88s-15-34.32-38.22-34.32-38.23,13.47-38.23,34.32,14.65,34.88,38.23,34.88Z"/><rect x="540.61" y="383.67" width="60.85" height="273.07"/><path d="M454.63,265.07l-.68.05c-60.79,4.05-101.63,47.13-110.47,116.98-1.39,15.9-2.2,32.21-2.34,47.48-.71,53.04,0,227.72,0,227.72h63.08s.22-148.35,0-203.88c-.04-16.01-.81-30.17.46-64.28,5.09-45.82,28.79-69.47,66.69-73.2l1.14-.11-17.88-50.75Z"/><path d="M581.34,385.47s-87.49,90.98-316.47,33.48v50s211.29,56.54,335.68-39.54l-19.2-43.94Z"/><path d="M861.73,400.74c-14.21-14.6-35.14-22.64-58.93-22.64-33.7,0-64.05,16.44-92.69,50.23v-44.66h-60.85v273.65h60.85v-177.76c16.29-22.65,41.68-49.53,70.4-49.53,12.14,0,22.21,4.67,29.54,12.17,8.38,8.58,11.55,18.15,12.45,35.92v178.61h60.85v-190.81c-.69-30.32-6.54-49.68-21.63-65.19Z"/><path d="M1804.27,536.54c.18-2.37.34-4.75.44-7.2.12-2.91.19-5.86.19-8.85,0-61.32-24.23-99.56-57.6-120.78l-.33-.39c-22.27-14.08-48.81-21.22-78.89-21.22-.09,0-.18,0-.28,0s-.18,0-.28,0c-30.08,0-56.62,7.14-78.89,21.22l-.33.39c-33.36,21.21-57.58,59.43-57.6,120.7,0,.03,0,.05,0,.08,0,.07,0,.13,0,.2,0,2.91.07,5.79.18,8.64.1,2.5.26,4.93.44,7.34.02.24.03.5.05.74,7.23,92.1,73.69,125.48,136.15,125.48.09,0,.18,0,.28,0,.09,0,.18,0,.28,0,62.45,0,128.91-33.38,136.14-125.47.02-.29.04-.59.06-.88ZM1721.43,592.94c-13.35,15-31.89,22.95-53.64,23.02-21.75-.07-40.3-8.02-53.64-23.02-13.73-15.43-21.44-38.13-22.48-65.92-.08-2.15-.13-4.32-.13-6.53,0-13.03,1.35-24.91,3.95-35.53.01-.06.03-.12.04-.18.3-1.23.64-2.44.97-3.64.13-.45.25-.91.39-1.35.23-.78.48-1.55.73-2.32.32-.97.63-1.94.97-2.88.08-.23.16-.45.24-.67,3.71-10.09,8.81-18.8,15.31-26.08,13.29-14.86,31.83-22.74,53.64-22.81,21.81.07,40.36,7.95,53.64,22.81,6.5,7.27,11.61,15.99,15.31,26.08.08.22.16.44.24.67.34.95.66,1.92.97,2.89.25.76.49,1.53.72,2.31.14.45.26.91.39,1.37.34,1.2.67,2.4.97,3.63.02.06.03.13.05.19,2.6,10.62,3.95,22.5,3.95,35.52,0,2.22-.05,4.4-.13,6.56-1.04,27.77-8.75,50.46-22.48,65.89Z"/><path d="M1500.58,536.54c.18-2.37.34-4.75.44-7.2.12-2.91.19-5.86.19-8.85,0-61.32-24.23-99.56-57.6-120.78l-.33-.39c-22.27-14.08-48.81-21.22-78.89-21.22-.09,0-.18,0-.28,0s-.18,0-.28,0c-30.08,0-56.62,7.14-78.89,21.22l-.33.39c-33.36,21.21-57.58,59.43-57.6,120.7,0,.03,0,.05,0,.08,0,.07,0,.13,0,.2,0,2.91.07,5.79.18,8.64.1,2.5.26,4.93.44,7.34.02.24.03.5.05.74,7.23,92.1,73.69,125.48,136.15,125.48.09,0,.18,0,.28,0,.09,0,.18,0,.28,0,62.45,0,128.91-33.38,136.14-125.47.02-.29.04-.59.06-.88ZM1417.74,592.94c-13.35,15-31.89,22.95-53.64,23.02-21.75-.07-40.3-8.02-53.64-23.02-13.73-15.43-21.44-38.13-22.48-65.92-.08-2.15-.13-4.32-.13-6.53,0-13.03,1.35-24.91,3.95-35.53.01-.06.03-.12.04-.18.3-1.23.64-2.44.97-3.64.13-.45.25-.91.39-1.35.23-.78.48-1.55.73-2.32.32-.97.63-1.94.97-2.88.08-.23.16-.45.24-.67,3.71-10.09,8.81-18.8,15.31-26.08,13.29-14.86,31.83-22.74,53.64-22.81,21.81.07,40.36,7.95,53.64,22.81,6.5,7.27,11.61,15.99,15.31,26.08.08.22.16.44.24.67.34.95.66,1.92.97,2.89.25.76.49,1.53.72,2.31.14.45.26.91.39,1.37.34,1.2.67,2.4.97,3.63.02.06.03.13.05.19,2.6,10.62,3.95,22.5,3.95,35.52,0,2.22-.05,4.4-.13,6.56-1.04,27.77-8.75,50.46-22.48,65.89Z"/><path d="M1199.23,520.49c0-.35-.02-.68-.02-1.02-.02-3.02-.08-6-.21-8.92,0-.09-.01-.18-.02-.27-2.45-55.63-24.84-92.46-55.98-112.61-20.07-12.99-43.62-19.57-70.01-19.57-35.74,0-63.35,12.68-82.1,37.69v-140.19h-60.85v381.72h60.85v-30.28c11.62,14.62,26.55,24.59,44.16,30.24.67.22,1.35.43,2.03.64.99.3,1.99.58,3,.85,1.32.36,2.65.68,4,1,.58.13,1.16.27,1.75.39,1.8.38,3.63.72,5.49,1.02.26.04.52.09.79.13,2.19.34,4.41.63,6.68.86,0,0,.02,0,.02,0,4.58.46,9.29.71,14.18.71.05,0,.11,0,.16,0,.05,0,.1,0,.15,0,64.16,0,122.5-40.69,125.77-133.85.03-.79.02-1.59.05-2.38.05-1.96.11-3.91.11-5.92,0-.04,0-.08,0-.12s0-.08,0-.12ZM1115.7,592.94c-13.47,15.06-32.29,23.03-54.41,23.03-34.6,0-60.25-19.41-70.4-53.27v-83.86c10.11-34.21,35.76-53.82,70.4-53.82,48.27,0,77.09,35.69,77.09,95.47,0,30.8-7.84,55.85-22.68,72.45Z"/><path d="M1877.81,628.8c0,16.24-12.31,28.63-28.63,28.63s-28.63-12.39-28.63-28.63,12.31-28.33,28.63-28.33,28.63,12.16,28.63,28.33ZM1871.95,628.8c0-13.35-9.42-22.84-22.77-22.84s-22.77,9.35-22.77,22.84,9.34,23.14,22.77,23.14,22.77-9.72,22.77-23.14ZM1863.05,643.86h-6.82c-.45-8.83-2.23-10.9-6.3-10.9h-6.3v10.9h-6.82v-30.04h14.61c6.9,0,10.98,3.49,10.98,9.27,0,3.86-1.85,6.6-5.12,8.08,3.71,1.78,5.49,5.86,5.78,12.68ZM1850.82,627.76c2.97,0,4.6-1.56,4.6-4.3s-1.56-4.08-4.23-4.08h-7.56v8.38h7.19Z"/></svg></a><div class="top-actions"><button class="btn btn-sm btn-ghost" type="button" id="hdr-help">Связаться с поддержкой</button><a class="btn btn-sm" href="https://finboo.io/en/dashboard" target="_blank" rel="noopener">Войти</a></div></div></header>
+<header class="topbar" id="top"><div class="topbar-in"><a class="brand" href="#top" aria-label="Finboo"><svg viewBox="262 255 1625 420" role="img" aria-label="Finboo" fill="#323232"><path d="M572.7,341.46c23.58,0,38.22-13.37,38.22-34.88s-15-34.32-38.22-34.32-38.23,13.47-38.23,34.32,14.65,34.88,38.23,34.88Z"/><rect x="540.61" y="383.67" width="60.85" height="273.07"/><path d="M454.63,265.07l-.68.05c-60.79,4.05-101.63,47.13-110.47,116.98-1.39,15.9-2.2,32.21-2.34,47.48-.71,53.04,0,227.72,0,227.72h63.08s.22-148.35,0-203.88c-.04-16.01-.81-30.17.46-64.28,5.09-45.82,28.79-69.47,66.69-73.2l1.14-.11-17.88-50.75Z"/><path d="M581.34,385.47s-87.49,90.98-316.47,33.48v50s211.29,56.54,335.68-39.54l-19.2-43.94Z"/><path d="M861.73,400.74c-14.21-14.6-35.14-22.64-58.93-22.64-33.7,0-64.05,16.44-92.69,50.23v-44.66h-60.85v273.65h60.85v-177.76c16.29-22.65,41.68-49.53,70.4-49.53,12.14,0,22.21,4.67,29.54,12.17,8.38,8.58,11.55,18.15,12.45,35.92v178.61h60.85v-190.81c-.69-30.32-6.54-49.68-21.63-65.19Z"/><path d="M1804.27,536.54c.18-2.37.34-4.75.44-7.2.12-2.91.19-5.86.19-8.85,0-61.32-24.23-99.56-57.6-120.78l-.33-.39c-22.27-14.08-48.81-21.22-78.89-21.22-.09,0-.18,0-.28,0s-.18,0-.28,0c-30.08,0-56.62,7.14-78.89,21.22l-.33.39c-33.36,21.21-57.58,59.43-57.6,120.7,0,.03,0,.05,0,.08,0,.07,0,.13,0,.2,0,2.91.07,5.79.18,8.64.1,2.5.26,4.93.44,7.34.02.24.03.5.05.74,7.23,92.1,73.69,125.48,136.15,125.48.09,0,.18,0,.28,0,.09,0,.18,0,.28,0,62.45,0,128.91-33.38,136.14-125.47.02-.29.04-.59.06-.88ZM1721.43,592.94c-13.35,15-31.89,22.95-53.64,23.02-21.75-.07-40.3-8.02-53.64-23.02-13.73-15.43-21.44-38.13-22.48-65.92-.08-2.15-.13-4.32-.13-6.53,0-13.03,1.35-24.91,3.95-35.53.01-.06.03-.12.04-.18.3-1.23.64-2.44.97-3.64.13-.45.25-.91.39-1.35.23-.78.48-1.55.73-2.32.32-.97.63-1.94.97-2.88.08-.23.16-.45.24-.67,3.71-10.09,8.81-18.8,15.31-26.08,13.29-14.86,31.83-22.74,53.64-22.81,21.81.07,40.36,7.95,53.64,22.81,6.5,7.27,11.61,15.99,15.31,26.08.08.22.16.44.24.67.34.95.66,1.92.97,2.89.25.76.49,1.53.72,2.31.14.45.26.91.39,1.37.34,1.2.67,2.4.97,3.63.02.06.03.13.05.19,2.6,10.62,3.95,22.5,3.95,35.52,0,2.22-.05,4.4-.13,6.56-1.04,27.77-8.75,50.46-22.48,65.89Z"/><path d="M1500.58,536.54c.18-2.37.34-4.75.44-7.2.12-2.91.19-5.86.19-8.85,0-61.32-24.23-99.56-57.6-120.78l-.33-.39c-22.27-14.08-48.81-21.22-78.89-21.22-.09,0-.18,0-.28,0s-.18,0-.28,0c-30.08,0-56.62,7.14-78.89,21.22l-.33.39c-33.36,21.21-57.58,59.43-57.6,120.7,0,.03,0,.05,0,.08,0,.07,0,.13,0,.2,0,2.91.07,5.79.18,8.64.1,2.5.26,4.93.44,7.34.02.24.03.5.05.74,7.23,92.1,73.69,125.48,136.15,125.48.09,0,.18,0,.28,0,.09,0,.18,0,.28,0,62.45,0,128.91-33.38,136.14-125.47.02-.29.04-.59.06-.88ZM1417.74,592.94c-13.35,15-31.89,22.95-53.64,23.02-21.75-.07-40.3-8.02-53.64-23.02-13.73-15.43-21.44-38.13-22.48-65.92-.08-2.15-.13-4.32-.13-6.53,0-13.03,1.35-24.91,3.95-35.53.01-.06.03-.12.04-.18.3-1.23.64-2.44.97-3.64.13-.45.25-.91.39-1.35.23-.78.48-1.55.73-2.32.32-.97.63-1.94.97-2.88.08-.23.16-.45.24-.67,3.71-10.09,8.81-18.8,15.31-26.08,13.29-14.86,31.83-22.74,53.64-22.81,21.81.07,40.36,7.95,53.64,22.81,6.5,7.27,11.61,15.99,15.31,26.08.08.22.16.44.24.67.34.95.66,1.92.97,2.89.25.76.49,1.53.72,2.31.14.45.26.91.39,1.37.34,1.2.67,2.4.97,3.63.02.06.03.13.05.19,2.6,10.62,3.95,22.5,3.95,35.52,0,2.22-.05,4.4-.13,6.56-1.04,27.77-8.75,50.46-22.48,65.89Z"/><path d="M1199.23,520.49c0-.35-.02-.68-.02-1.02-.02-3.02-.08-6-.21-8.92,0-.09-.01-.18-.02-.27-2.45-55.63-24.84-92.46-55.98-112.61-20.07-12.99-43.62-19.57-70.01-19.57-35.74,0-63.35,12.68-82.1,37.69v-140.19h-60.85v381.72h60.85v-30.28c11.62,14.62,26.55,24.59,44.16,30.24.67.22,1.35.43,2.03.64.99.3,1.99.58,3,.85,1.32.36,2.65.68,4,1,.58.13,1.16.27,1.75.39,1.8.38,3.63.72,5.49,1.02.26.04.52.09.79.13,2.19.34,4.41.63,6.68.86,0,0,.02,0,.02,0,4.58.46,9.29.71,14.18.71.05,0,.11,0,.16,0,.05,0,.1,0,.15,0,64.16,0,122.5-40.69,125.77-133.85.03-.79.02-1.59.05-2.38.05-1.96.11-3.91.11-5.92,0-.04,0-.08,0-.12s0-.08,0-.12ZM1115.7,592.94c-13.47,15.06-32.29,23.03-54.41,23.03-34.6,0-60.25-19.41-70.4-53.27v-83.86c10.11-34.21,35.76-53.82,70.4-53.82,48.27,0,77.09,35.69,77.09,95.47,0,30.8-7.84,55.85-22.68,72.45Z"/><path d="M1877.81,628.8c0,16.24-12.31,28.63-28.63,28.63s-28.63-12.39-28.63-28.63,12.31-28.33,28.63-28.33,28.63,12.16,28.63,28.33ZM1871.95,628.8c0-13.35-9.42-22.84-22.77-22.84s-22.77,9.35-22.77,22.84,9.34,23.14,22.77,23.14,22.77-9.72,22.77-23.14ZM1863.05,643.86h-6.82c-.45-8.83-2.23-10.9-6.3-10.9h-6.3v10.9h-6.82v-30.04h14.61c6.9,0,10.98,3.49,10.98,9.27,0,3.86-1.85,6.6-5.12,8.08,3.71,1.78,5.49,5.86,5.78,12.68ZM1850.82,627.76c2.97,0,4.6-1.56,4.6-4.3s-1.56-4.08-4.23-4.08h-7.56v8.38h7.19Z"/></svg></a><div class="top-actions"><div class="lang" role="group" aria-label="Язык / Language"><button type="button" data-set-lang="ru" aria-pressed="true">RU</button><button type="button" data-set-lang="en" aria-pressed="false">EN</button></div><button class="btn btn-sm btn-ghost" type="button" id="hdr-help" data-en="Contact support">Связаться с поддержкой</button><a class="btn btn-sm" href="https://finboo.io/en/dashboard" target="_blank" rel="noopener" data-en="Log in">Войти</a></div></div></header>
 
-<div class="wrap" id="top">
+<div class="wrap" data-lang="ru" lang="ru">
   <aside class="rail">
     <div class="logo"><small>Гайд для фрилансеров</small></div>
-    <ol class="toc" id="toc">
+    <ol class="toc">
       <li><a href="#start"><span class="n">→</span>Регистрация</a></li>
       <li><a href="#kyc"><span class="n">1</span>Профиль (KYC)</a></li>
       <li><a href="#verify"><span class="n">2</span>Верификация</a></li>
@@ -456,7 +461,7 @@ dialog button{position:fixed;top:calc(env(safe-area-inset-top,0px) + 14px);right
           <div class="calc" aria-labelledby="calc-t">
             <h3 id="calc-t">Посчитайте пример</h3>
             <div class="calc-row">
-              <label for="amt">Сумма за работу, EUR<input id="amt" type="number" min="0" step="50" value="1000" inputmode="decimal"></label>
+              <label for="amt">Сумма за работу, EUR<input class="c-amt" id="amt" type="number" min="0" step="50" value="1000" inputmode="decimal"></label>
               <div class="seg" role="group" aria-label="Кто платит комиссию">
                 <button type="button" data-p="me" aria-pressed="true">Я</button>
                 <button type="button" data-p="client" aria-pressed="false">Мой клиент</button>
@@ -464,9 +469,9 @@ dialog button{position:fixed;top:calc(env(safe-area-inset-top,0px) + 14px);right
               </div>
             </div>
             <div class="out">
-              <div><span>Сумма счёта клиенту</span><strong id="o-inv">1 000,00</strong></div>
-              <div><span>Комиссия сервиса, 5%</span><strong id="o-fee">50,00</strong></div>
-              <div class="you"><span>Вы получите</span><strong id="o-you">950,00</strong></div>
+              <div><span>Сумма счёта клиенту</span><strong class="o-inv">1 000,00</strong></div>
+              <div><span>Комиссия сервиса, 5%</span><strong class="o-fee">50,00</strong></div>
+              <div class="you"><span>Вы получите</span><strong class="o-you">950,00</strong></div>
             </div>
             <small>Расчёт для примера при ставке 5%. Точные суммы вы увидите в форме перед выставлением счёта.</small>
           </div>
@@ -524,20 +529,343 @@ dialog button{position:fixed;top:calc(env(safe-area-inset-top,0px) + 14px);right
   </main>
 </div>
 
-<footer class="foot"><div class="foot-in"><div><svg viewBox="262 255 1625 420" aria-hidden="true" fill="#FFFFFF"><path d="M572.7,341.46c23.58,0,38.22-13.37,38.22-34.88s-15-34.32-38.22-34.32-38.23,13.47-38.23,34.32,14.65,34.88,38.23,34.88Z"/><rect x="540.61" y="383.67" width="60.85" height="273.07"/><path d="M454.63,265.07l-.68.05c-60.79,4.05-101.63,47.13-110.47,116.98-1.39,15.9-2.2,32.21-2.34,47.48-.71,53.04,0,227.72,0,227.72h63.08s.22-148.35,0-203.88c-.04-16.01-.81-30.17.46-64.28,5.09-45.82,28.79-69.47,66.69-73.2l1.14-.11-17.88-50.75Z"/><path d="M581.34,385.47s-87.49,90.98-316.47,33.48v50s211.29,56.54,335.68-39.54l-19.2-43.94Z"/><path d="M861.73,400.74c-14.21-14.6-35.14-22.64-58.93-22.64-33.7,0-64.05,16.44-92.69,50.23v-44.66h-60.85v273.65h60.85v-177.76c16.29-22.65,41.68-49.53,70.4-49.53,12.14,0,22.21,4.67,29.54,12.17,8.38,8.58,11.55,18.15,12.45,35.92v178.61h60.85v-190.81c-.69-30.32-6.54-49.68-21.63-65.19Z"/><path d="M1804.27,536.54c.18-2.37.34-4.75.44-7.2.12-2.91.19-5.86.19-8.85,0-61.32-24.23-99.56-57.6-120.78l-.33-.39c-22.27-14.08-48.81-21.22-78.89-21.22-.09,0-.18,0-.28,0s-.18,0-.28,0c-30.08,0-56.62,7.14-78.89,21.22l-.33.39c-33.36,21.21-57.58,59.43-57.6,120.7,0,.03,0,.05,0,.08,0,.07,0,.13,0,.2,0,2.91.07,5.79.18,8.64.1,2.5.26,4.93.44,7.34.02.24.03.5.05.74,7.23,92.1,73.69,125.48,136.15,125.48.09,0,.18,0,.28,0,.09,0,.18,0,.28,0,62.45,0,128.91-33.38,136.14-125.47.02-.29.04-.59.06-.88ZM1721.43,592.94c-13.35,15-31.89,22.95-53.64,23.02-21.75-.07-40.3-8.02-53.64-23.02-13.73-15.43-21.44-38.13-22.48-65.92-.08-2.15-.13-4.32-.13-6.53,0-13.03,1.35-24.91,3.95-35.53.01-.06.03-.12.04-.18.3-1.23.64-2.44.97-3.64.13-.45.25-.91.39-1.35.23-.78.48-1.55.73-2.32.32-.97.63-1.94.97-2.88.08-.23.16-.45.24-.67,3.71-10.09,8.81-18.8,15.31-26.08,13.29-14.86,31.83-22.74,53.64-22.81,21.81.07,40.36,7.95,53.64,22.81,6.5,7.27,11.61,15.99,15.31,26.08.08.22.16.44.24.67.34.95.66,1.92.97,2.89.25.76.49,1.53.72,2.31.14.45.26.91.39,1.37.34,1.2.67,2.4.97,3.63.02.06.03.13.05.19,2.6,10.62,3.95,22.5,3.95,35.52,0,2.22-.05,4.4-.13,6.56-1.04,27.77-8.75,50.46-22.48,65.89Z"/><path d="M1500.58,536.54c.18-2.37.34-4.75.44-7.2.12-2.91.19-5.86.19-8.85,0-61.32-24.23-99.56-57.6-120.78l-.33-.39c-22.27-14.08-48.81-21.22-78.89-21.22-.09,0-.18,0-.28,0s-.18,0-.28,0c-30.08,0-56.62,7.14-78.89,21.22l-.33.39c-33.36,21.21-57.58,59.43-57.6,120.7,0,.03,0,.05,0,.08,0,.07,0,.13,0,.2,0,2.91.07,5.79.18,8.64.1,2.5.26,4.93.44,7.34.02.24.03.5.05.74,7.23,92.1,73.69,125.48,136.15,125.48.09,0,.18,0,.28,0,.09,0,.18,0,.28,0,62.45,0,128.91-33.38,136.14-125.47.02-.29.04-.59.06-.88ZM1417.74,592.94c-13.35,15-31.89,22.95-53.64,23.02-21.75-.07-40.3-8.02-53.64-23.02-13.73-15.43-21.44-38.13-22.48-65.92-.08-2.15-.13-4.32-.13-6.53,0-13.03,1.35-24.91,3.95-35.53.01-.06.03-.12.04-.18.3-1.23.64-2.44.97-3.64.13-.45.25-.91.39-1.35.23-.78.48-1.55.73-2.32.32-.97.63-1.94.97-2.88.08-.23.16-.45.24-.67,3.71-10.09,8.81-18.8,15.31-26.08,13.29-14.86,31.83-22.74,53.64-22.81,21.81.07,40.36,7.95,53.64,22.81,6.5,7.27,11.61,15.99,15.31,26.08.08.22.16.44.24.67.34.95.66,1.92.97,2.89.25.76.49,1.53.72,2.31.14.45.26.91.39,1.37.34,1.2.67,2.4.97,3.63.02.06.03.13.05.19,2.6,10.62,3.95,22.5,3.95,35.52,0,2.22-.05,4.4-.13,6.56-1.04,27.77-8.75,50.46-22.48,65.89Z"/><path d="M1199.23,520.49c0-.35-.02-.68-.02-1.02-.02-3.02-.08-6-.21-8.92,0-.09-.01-.18-.02-.27-2.45-55.63-24.84-92.46-55.98-112.61-20.07-12.99-43.62-19.57-70.01-19.57-35.74,0-63.35,12.68-82.1,37.69v-140.19h-60.85v381.72h60.85v-30.28c11.62,14.62,26.55,24.59,44.16,30.24.67.22,1.35.43,2.03.64.99.3,1.99.58,3,.85,1.32.36,2.65.68,4,1,.58.13,1.16.27,1.75.39,1.8.38,3.63.72,5.49,1.02.26.04.52.09.79.13,2.19.34,4.41.63,6.68.86,0,0,.02,0,.02,0,4.58.46,9.29.71,14.18.71.05,0,.11,0,.16,0,.05,0,.1,0,.15,0,64.16,0,122.5-40.69,125.77-133.85.03-.79.02-1.59.05-2.38.05-1.96.11-3.91.11-5.92,0-.04,0-.08,0-.12s0-.08,0-.12ZM1115.7,592.94c-13.47,15.06-32.29,23.03-54.41,23.03-34.6,0-60.25-19.41-70.4-53.27v-83.86c10.11-34.21,35.76-53.82,70.4-53.82,48.27,0,77.09,35.69,77.09,95.47,0,30.8-7.84,55.85-22.68,72.45Z"/><path d="M1877.81,628.8c0,16.24-12.31,28.63-28.63,28.63s-28.63-12.39-28.63-28.63,12.31-28.33,28.63-28.33,28.63,12.16,28.63,28.33ZM1871.95,628.8c0-13.35-9.42-22.84-22.77-22.84s-22.77,9.35-22.77,22.84,9.34,23.14,22.77,23.14,22.77-9.72,22.77-23.14ZM1863.05,643.86h-6.82c-.45-8.83-2.23-10.9-6.3-10.9h-6.3v10.9h-6.82v-30.04h14.61c6.9,0,10.98,3.49,10.98,9.27,0,3.86-1.85,6.6-5.12,8.08,3.71,1.78,5.49,5.86,5.78,12.68ZM1850.82,627.76c2.97,0,4.6-1.56,4.6-4.3s-1.56-4.08-4.23-4.08h-7.56v8.38h7.19Z"/></svg><p>Простой путь к глобальной работе. Выставляйте счета и получайте выплаты по всему миру.</p></div><ul><li><a href="https://finboo.io/en/privacy-policy.html" target="_blank" rel="noopener">Политика конфиденциальности</a></li><li><a href="https://t.me/finboosupport" target="_blank" rel="noopener">Поддержка в Telegram</a></li><li><a href="https://wa.me/37122046801" target="_blank" rel="noopener">Поддержка в WhatsApp</a></li></ul></div><div class="foot-copy">© 2026 Finboo. Все права защищены.</div></footer>
+<div class="wrap" data-lang="en" lang="en" hidden>
+  <aside class="rail">
+    <div class="logo"><small>Freelancer guide</small></div>
+    <ol class="toc">
+      <li><a href="#en-start"><span class="n">→</span>Sign up</a></li>
+      <li><a href="#en-kyc"><span class="n">1</span>Profile (KYC)</a></li>
+      <li><a href="#en-verify"><span class="n">2</span>Verification</a></li>
+      <li><a href="#en-payout"><span class="n">3</span>Withdrawal method</a></li>
+      <li><a href="#en-contract"><span class="n">4</span>Agreement</a></li>
+      <li><a href="#en-invoice"><span class="n">5</span>First invoice</a></li>
+      <li><a href="#en-after"><span class="n">✓</span>What happens next</a></li>
+      <li><a href="#en-faq"><span class="n">?</span>FAQ</a></li>
+    </ol>
+    <p class="help">Stuck on a step? Message us on <a href="https://wa.me/37122046801" target="_blank" rel="noopener">WhatsApp</a> or <a href="https://t.me/finboosupport" target="_blank" rel="noopener">Telegram</a> and we will help.</p>
+  </aside>
+
+  <main>
+    <header class="hero">
+      <div class="hero-text"><span class="eyebrow">Getting started</span><h1>How to start working with Finboo</h1><p class="lead">Complete the Get Started checklist in your account, from signing up to issuing your first invoice to clients anywhere in the world. It usually takes about 15&nbsp;minutes.</p></div>
+      <div class="needs">
+        <div class="need"><b>ID document</b>A valid passport or ID card. You need the original: copies and scans are not accepted.</div>
+        <div class="need"><b>Smartphone</b>Needed for identity verification, even if you sign up on a computer.</div>
+        <div class="need"><b>Tax number</b>The Tax ID of the country where you are a tax resident, and your VAT number if you have one.</div>
+        <div class="need"><b>Payout details</b>IBAN, card number, crypto wallet, or a PayPal, Payoneer, Wise or Revolut account.</div>
+      </div>
+    </header>
+
+    <section id="en-start">
+      <div class="head">
+        <span class="eyebrow">Sign up</span>
+        <h2>Signing up for Finboo</h2>
+        <p class="lead">You can sign up by invitation from a company or on your own. Only the first step is different; after that, everything is the same.</p>
+      </div>
+      <div class="paths">
+        <a class="path" href="#en-invited"><span class="t">A company invited me</span><span class="d">You received an “Invitation to join … on Finboo” email from a company you work with. You need steps 1–4; issuing invoices is optional.</span><span class="go">See the steps ↓</span></a>
+        <a class="path" href="#en-self"><span class="t">I’m signing up on my own</span><span class="d">You want to invoice your own clients through Finboo. You need all five steps.</span><span class="go">See the steps ↓</span></a>
+      </div>
+
+      <div class="head" id="en-invited" style="scroll-margin-top:84px"><h3>If a company invited you</h3></div>
+      <ol class="steps">
+        <li class="step"><div>
+          <p>Open the email from Finboo (<span class="ui">info@finboo.io</span>) and click <span class="ui">Join the Team</span>. The standard sign-up form will open.</p>
+          <figure><button class="shot" type="button"><img src="img/01-invite-email.webp" alt="Invitation email with the Join the Team button" loading="lazy"></button>
+          <figcaption><span class="m"></span>The invitation email. If you can’t find it in your inbox, check your spam folder.</figcaption></figure>
+        </div></li>
+        <li class="step"><div>
+          <p>Sign up as described below. The company’s invitation will appear in your account after you sign up, under the notification bell. See <a href="#en-accept">the end of this section</a> for how to accept it.</p>
+        </div></li>
+      </ol>
+
+      <div class="head" id="en-self" style="scroll-margin-top:84px"><h3>Sign up</h3></div>
+      <ol class="steps">
+        <li class="step"><div>
+          <p>Choose how to sign up: <span class="ui">Continue with Google</span> or the form. In the form, enter your first name, last name, email and password. The password needs lowercase and uppercase letters, numbers and at least 8 characters. Click <span class="ui">Sign up for free</span>.</p>
+          <figure><button class="shot" type="button"><img src="img/en-02-signup.webp" alt="Create a Freelancer Account form" loading="lazy"></button></figure>
+        </div></li>
+        <li class="step"><div>
+          <p>Answer a short five-question survey. It helps us understand how you work and suggest the right features.</p>
+          <figure><button class="shot" type="button"><img src="img/en-03-welcome.webp" alt="Welcome to Finboo! window with the Continue button" loading="lazy"></button></figure>
+        </div></li>
+        <li class="step"><div>
+          <p>After the survey, your account dashboard opens with the <b>Get Started</b> checklist. Steps unlock in order: for example, the agreement becomes available only after you add a withdrawal method. Click the arrow next to a step to open it.</p>
+          <div class="meter" aria-label="0 of 4 steps completed"><i></i><i></i><i></i><i></i>&nbsp;0/4</div>
+          <figure><button class="shot" type="button"><img src="img/en-04-dashboard.webp" alt="Dashboard with the Get Started checklist and the notification bell" loading="lazy"></button>
+          <figcaption><span class="m"></span>The notification bell. This is where a company’s invitation arrives.</figcaption></figure>
+        </div></li>
+      </ol>
+
+      <div class="note" id="en-accept" style="scroll-margin-top:84px">
+        <b>How to accept a company’s invitation</b>
+        <p>Click the bell in the top right corner: you will see a notification that the company is inviting you to join. Open it and confirm the invitation. The company will appear in <span class="ui">Clients</span>, so you won’t need to enter its details when you issue an invoice.</p>
+      </div>
+      <figure><button class="shot" type="button"><img src="img/en-18-dash-sign.webp" alt="Dashboard with a new notification on the bell" loading="lazy"></button>
+      <figcaption><span class="m"></span>A red badge on the bell means you have a new notification, such as an invitation from a company.</figcaption></figure>
+    </section>
+
+    <section id="en-kyc">
+      <div class="head">
+        <span class="eyebrow">Step 1 of 5</span>
+        <h2>Complete your profile (KYC form)</h2>
+        <p class="lead">These details go into your agreement, invoices and closing documents. Click the arrow next to “Fill in the KYC form” to open <b>Settings → Profile</b>.</p>
+      </div>
+      <ol class="steps">
+        <li class="step"><div>
+          <h3>Tax residency</h3>
+          <p>Click <span class="ui">Add tax residency</span> and fill in the fields. The fields depend on the country:</p>
+          <ul class="fields"><li><b>Country</b>, required;</li><li><b>Tax ID</b>, for example a NIF in Spain;</li><li><b>Employment status</b>, required: for example, Self-Employed;</li><li><b>VAT number</b>, if you have one.</li></ul>
+          <figure><button class="shot" type="button"><img src="img/en-05-tax-empty.webp" alt="Tax Information block with the Add tax residency button" loading="lazy"></button></figure>
+          <p>If you are a tax resident of more than one country and want to receive payouts in each of them, add every residency. Employment status, tax regime and VAT are set separately for each country. We use this information only to prepare your documents and never send it to tax authorities.</p>
+          <figure><button class="shot" type="button"><img src="img/en-07-tax-filled.webp" alt="Tax residency in Spain added" loading="lazy"></button>
+          <figcaption><span class="m"></span>A residency has been added. Use this button to add another one.</figcaption></figure>
+        </div></li>
+        <li class="step"><div>
+          <h3>Living address</h3>
+          <p>Click <span class="ui">Add address</span> and enter the address where you live. It appears on your documents. If your bank or payment provider is in another country, add a second address in that country.</p>
+          <figure><button class="shot" type="button"><img src="img/en-08-address-empty.webp" alt="Living Addresses block with the Add address button" loading="lazy"></button></figure>
+        </div></li>
+        <li class="step"><div>
+          <h3>Personal information and area of expertise</h3>
+          <p>Enter your last name, first name and middle name (if you have one), and your phone number. Your email is already linked to your account, so you don’t need to fill it in.</p>
+          <figure><button class="shot" type="button"><img src="img/en-09-address-filled.webp" alt="Address added and the Personal Information block" loading="lazy"></button></figure>
+          <p>Choose your <b>area of expertise</b> from the catalog: pick the one closest to your work. Then click <span class="ui">Save profile</span>.</p>
+          <figure><button class="shot" type="button"><img src="img/en-10-expertise.webp" alt="Area of Expertise field and the Save profile button" loading="lazy"></button></figure>
+        </div></li>
+        <li class="step"><div>
+          <p>The Profile Updated window appears. Click <span class="ui">Open the checklist</span> to go to the next step.</p>
+          <figure><button class="shot" type="button"><img src="img/en-11-profile-updated.webp" alt="Profile Updated window" loading="lazy"></button></figure>
+        </div></li>
+      </ol>
+      <div class="warn">
+        <b>If you receive payouts to Russia</b>
+        <ul>
+          <li>For payouts to Russia, enter a <b>Russian address</b>. For payouts to any other country, you need an address outside Russia. Add both addresses if needed.</li>
+          <li>Tax residents of Russia must also enter their full name in Cyrillic.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="en-verify">
+      <div class="head">
+        <span class="eyebrow">Step 2 of 5</span>
+        <h2>Verify your identity</h2>
+        <p class="lead">Identity verification keeps your transactions secure and is required by law. It runs through Veriff and usually takes a couple of minutes.</p>
+      </div>
+      <div class="warn">
+        <b>Have your document ready</b>
+        <ul>
+          <li>We accept an internationally recognized <b>valid passport or ID card</b>. Internal passports and driving licenses are not accepted.</li>
+          <li>You need the <b>original document in your hands</b>. Copies, scans and photos of a screen are not accepted. This is the most common reason verification fails.</li>
+          <li>If you don’t have a suitable document, message us on <a href="https://wa.me/37122046801" target="_blank" rel="noopener">WhatsApp</a> or <a href="https://t.me/finboosupport" target="_blank" rel="noopener">Telegram</a> and we will suggest other ways to verify.</li>
+        </ul>
+      </div>
+      <ol class="steps">
+        <li class="step"><div>
+          <p>On the dashboard, click the arrow next to <b>Verification</b>.</p>
+          <figure><button class="shot" type="button"><img src="img/en-12-dash-verify.webp" alt="Checklist 1/4 with Verification highlighted" loading="lazy"></button></figure>
+        </div></li>
+        <li class="step"><div>
+          <p>Verification is done on a smartphone. If you are on a computer, scan the QR code with your phone or enter your phone number to get a secure link by SMS.</p>
+          <figure><button class="shot" type="button"><img src="img/en-13-veriff.webp" alt="Veriff screen: QR code or a link by SMS" loading="lazy"></button>
+          <figcaption>The QR code is hidden in this image: each user gets their own.</figcaption></figure>
+        </div></li>
+        <li class="step"><div>
+          <p>On your phone, take a selfie and a photo of your document. Once the check is complete, the step gets a green tick on the dashboard.</p>
+        </div></li>
+      </ol>
+    </section>
+
+    <section id="en-payout">
+      <div class="head">
+        <span class="eyebrow">Step 3 of 5</span>
+        <h2>Add a withdrawal method</h2>
+        <p class="lead">This is where Finboo will send your money. Once you add it, payouts become available.</p>
+      </div>
+      <ol class="steps">
+        <li class="step"><div>
+          <p>Click the arrow next to <b>Add a withdrawal method</b>.</p>
+          <figure><button class="shot" type="button"><img src="img/en-14-dash-payout.webp" alt="Checklist 2/4 with Add a withdrawal method highlighted" loading="lazy"></button></figure>
+        </div></li>
+        <li class="step"><div>
+          <p>Choose an option: bank account, card number, crypto wallet (USDT, USDC), PayPal, Payoneer and more. You can add several methods right away or come back later in <b>Settings → Withdrawal methods</b>.</p>
+          <figure><button class="shot" type="button"><img src="img/en-15-payout-methods.webp" alt="List of withdrawal methods" loading="lazy"></button></figure>
+        </div></li>
+        <li class="step"><div>
+          <p>For a bank account, choose the country and currency, then enter your IBAN or account number, BIC/SWIFT code and bank name. Click <span class="ui">Save</span>.</p>
+          <figure><button class="shot" type="button"><img src="img/en-16-bank-form.webp" alt="Bank account form: country, currency, IBAN, BIC/SWIFT, bank name" loading="lazy"></button></figure>
+        </div></li>
+        <li class="step"><div>
+          <p>Your withdrawal method is saved. In the window that opens, click <span class="ui">Review &amp; sign</span> to go to the agreement.</p>
+          <figure><button class="shot" type="button"><img src="img/en-17-payout-added.webp" alt="Payout method added! window" loading="lazy"></button></figure>
+        </div></li>
+      </ol>
+      <div class="note"><p>Payouts run under your agreement with Finboo, which is issued for your payout method. That is why a new withdrawal method may require a new agreement to sign.</p></div>
+    </section>
+
+    <section id="en-contract">
+      <div class="head">
+        <span class="eyebrow">Step 4 of 5</span>
+        <h2>Sign the agreement</h2>
+        <p class="lead">This is the Independent Subcontractor Agreement (Framework Services Agreement) between you and Finboo Limited. It is the basis for your payouts, and once it’s signed you can issue invoices.</p>
+      </div>
+      <ol class="steps">
+        <li class="step"><div>
+          <p>Read the agreement, scroll down and click <span class="ui">Sign now</span>.</p>
+          <figure><button class="shot" type="button"><img src="img/en-19-contract.webp" alt="Agreement with the Sign now button and the auto-sign checkbox" loading="lazy"></button></figure>
+          <div class="note">
+            <b>The “Automatically sign my future completion certificates” checkbox</b>
+            <p>We recommend turning it on: your money then arrives right away instead of waiting for you to sign each certificate manually. You get a notification for every certificate and have 5 business days to dispute it. Auto-signing applies to certificates only, not agreements. You can turn it off in Settings at any time.</p>
+          </div>
+        </div></li>
+        <li class="step"><div>
+          <p>Add your signature: draw it in the box, type your name (<span class="ui">Type</span>) or upload an image of your signature (<span class="ui">Upload</span>). Click <span class="ui">Sign and complete</span>.</p>
+          <figure><button class="shot" type="button"><img src="img/en-20-signature.webp" alt="Signature window: draw, type or upload" loading="lazy"></button></figure>
+        </div></li>
+        <li class="step"><div>
+          <p>Done. The signed agreement is stored in <span class="ui">Documents</span>, where you can also download it as a PDF and view the signing journal.</p>
+          <figure><button class="shot" type="button"><img src="img/en-21-signed.webp" alt="Agreement signed! window with the Done button" loading="lazy"></button></figure>
+        </div></li>
+      </ol>
+      <div class="done" id="en-invited-done">
+        <span class="eyebrow">Invited by a company?</span>
+        <h3>That’s it: <em>now just wait for your payout</em></h3>
+        <p>If you work with the company that invited you, you don’t need to issue invoices. The company creates payouts for you.</p>
+        <ol>
+          <li>The company creates a payout in Finboo.</li>
+          <li>You get a notification in your account.</li>
+          <li>The money arrives to your withdrawal method or your balance.</li>
+        </ol>
+        <p>You only need step 5 if you want to invoice a client of your own.</p>
+      </div>
+    </section>
+
+    <section id="en-invoice">
+      <div class="head">
+        <span class="eyebrow">Step 5 of 5</span>
+        <h2>Issue your first invoice</h2>
+        <p class="lead">The invoice is issued on behalf of Finboo Limited (Cyprus): your client pays Finboo, and Finboo transfers the money to you. Creating an invoice takes three screens: client, service and payment.</p>
+      </div>
+      <ol class="steps">
+        <li class="step"><div>
+          <p>Open <span class="ui">Invoices</span> in the sidebar, or use the button in the Agreement signed window. Click <span class="ui">Create your first invoice</span>.</p>
+          <figure><button class="shot" type="button"><img src="img/22-invoices-empty.webp" alt="Invoices section with the Create your first invoice button" loading="lazy"></button></figure>
+        </div></li>
+        <li class="step"><div>
+          <h3>Client details</h3>
+          <p>Choose a client from the list. The company that invited you is already there. For a new client, click <span class="ui">Add new</span>.</p>
+          <figure><button class="shot" type="button"><img src="img/24-select-client.webp" alt="Client dropdown with the Add new option" loading="lazy"></button></figure>
+          <p>For a new client, fill in the company details:</p>
+          <ul class="fields"><li>company name, country, city;</li><li>registration address and ZIP code;</li><li>company registration number;</li><li>VAT number: required if the client is registered in the EU.</li></ul>
+          <figure><button class="shot" type="button"><img src="img/25-new-client.webp" alt="New client form" loading="lazy"></button>
+          <figcaption>You can also add clients in advance in the Clients section with the “+” button.</figcaption></figure>
+        </div></li>
+        <li class="step"><div>
+          <h3>Task details</h3>
+          <p>Choose the service <b>category</b>. Optionally, add a short description of the work, for example “Email marketing strategy”. This goes into the invoice and closing documents. Click <span class="ui">Continue</span>.</p>
+          <figure><button class="shot" type="button"><img src="img/26-task.webp" alt="Task details step: category and description" loading="lazy"></button></figure>
+        </div></li>
+        <li class="step"><div>
+          <h3>Payment details</h3>
+          <p>The <b>invoice date</b> and <b>due date</b> are filled in automatically (today and one week later); you can change them if needed. Choose the invoice currency and enter the amount.</p>
+          <p><b>Withdrawal method</b>: where Finboo sends the money once the invoice is paid.</p>
+          <ul class="fields">
+            <li><b>Balance</b>: the money goes to your Finboo account. You can withdraw it manually at any time, including in parts to different withdrawal methods.</li>
+            <li><b>Saved details</b> (for example, a bank account): the money is sent there automatically.</li>
+            <li><b>Add new</b>: if you don’t have the right details saved yet.</li>
+          </ul>
+          <figure><button class="shot" type="button"><img src="img/27-payout-choice.webp" alt="Choosing a withdrawal method: Balance or bank account" loading="lazy"></button></figure>
+        </div></li>
+        <li class="step"><div>
+          <h3>Who pays the fee</h3>
+          <p>Choose who pays the service fee: <b>you</b>, <b>your client</b>, or you <b>split</b> it. At the bottom of the form you see the invoice amount, the fee and the amount you will receive. If the company creates the payout for you, it makes this choice.</p>
+          <figure><button class="shot" type="button"><img src="img/28-fees.webp" alt="Choosing who pays the fee and the totals" loading="lazy"></button></figure>
+          <div class="calc" aria-labelledby="en-calc-t">
+            <h3 id="en-calc-t">Try an example</h3>
+            <div class="calc-row">
+              <label for="en-amt">Amount for your work, EUR<input class="c-amt" id="en-amt" type="number" min="0" step="50" value="1000" inputmode="decimal"></label>
+              <div class="seg" role="group" aria-label="Who pays the fee">
+                <button type="button" data-p="me" aria-pressed="true">Me</button>
+                <button type="button" data-p="client" aria-pressed="false">My client</button>
+                <button type="button" data-p="split" aria-pressed="false">Split</button>
+              </div>
+            </div>
+            <div class="out">
+              <div><span>Invoice amount for the client</span><strong class="o-inv">1,000.00</strong></div>
+              <div><span>Service fee, 5%</span><strong class="o-fee">50.00</strong></div>
+              <div class="you"><span>You receive</span><strong class="o-you">950.00</strong></div>
+            </div>
+            <small>Example calculation at a 5% rate. You will see the exact amounts in the form before you issue the invoice.</small>
+          </div>
+        </div></li>
+        <li class="step"><div>
+          <h3>Review and issue the invoice</h3>
+          <p>Check the invoice number (assigned automatically), dates, currency, your details and your client’s details. Click <span class="ui">Issue invoice</span>.</p>
+          <figure><button class="shot" type="button"><img src="img/29-preview.webp" alt="Invoice preview with the Issue invoice button" loading="lazy"></button></figure>
+        </div></li>
+        <li class="step"><div>
+          <h3>Send the invoice to your client</h3>
+          <p>Click <span class="ui">Download</span> and send the PDF to your client however you like: by email, messenger and so on. Your client can pay by bank transfer or in crypto: the payment details are already in the PDF.</p>
+          <figure><button class="shot" type="button"><img src="img/30-statuses.webp" alt="Invoice issued: statuses and the Download button" loading="lazy"></button></figure>
+          <div class="warn"><p><b>Important for your client:</b> when paying by bank transfer, they must include the invoice number (Reference Number, for example <span class="ui">BQJAA-001-26</span>) in the payment description. Otherwise the payment may not be matched.</p></div>
+        </div></li>
+      </ol>
+    </section>
+
+    <section id="en-after">
+      <div class="head">
+        <span class="eyebrow">After you issue it</span>
+        <h2>What happens next</h2>
+        <p class="lead">You can see the invoice status in the Invoices section. When the money arrives, you get a notification in your account.</p>
+      </div>
+      <div class="status">
+        <div><span class="pill p1">Issued</span><p>The invoice is created. Download it and send it to your client if you haven’t already.</p></div>
+        <div><span class="pill p2">Processing</span><p>Your client has paid and the payment is on its way to Finboo. Timing depends on the client’s country, bank, currency and payment method.</p></div>
+        <div><span class="pill p3">Paid out</span><p>Finboo has sent the money to your withdrawal method or balance within 24 hours of receiving the payment.</p></div>
+      </div>
+    </section>
+
+    <section id="en-faq">
+      <div class="head">
+        <span class="eyebrow">FAQ</span>
+        <h2>Frequently asked questions</h2>
+      </div>
+      <div class="faq">
+        <details><summary>How does my client pay the invoice?</summary><div><p>Your client receives a PDF invoice issued on behalf of Finboo Limited. It includes bank details for a transfer (SEPA, SWIFT) and a link to pay in crypto. For a bank transfer, the client must include the invoice number in the payment description.</p></div></details>
+        <details><summary>When will I get my money?</summary><div><p>First, your client pays Finboo. This usually takes 1–3 days, depending on the client’s country, bank, currency, intermediary banks and payment method.</p><p>As soon as the money reaches us, we send it to you within 24 hours. If a payout is delayed by bank checks or for any other reason, we will let you know.</p></div></details>
+        <details><summary>What do I do with money on my balance?</summary><div><p>If you chose “Balance” when creating the invoice, the money stays in your Finboo account. You can withdraw it manually in the Finance section to any of your withdrawal methods, in full or in parts.</p></div></details>
+        <details><summary>Which currencies can I invoice in?</summary><div><p>EUR, USD, GBP and other currencies. You choose the currency for each invoice.</p></div></details>
+        <details><summary>What exchange rate does Finboo use?</summary><div><p>Finboo does not charge extra for currency conversion. The public rate of the bank, Visa/Mastercard or the payment provider applies, depending on your withdrawal method.</p></div></details>
+        <details><summary>I don’t have a suitable document. How can I get verified?</summary><div><p>Message us on <a href="https://wa.me/37122046801" target="_blank" rel="noopener">WhatsApp</a> or <a href="https://t.me/finboosupport" target="_blank" rel="noopener">Telegram</a>. We will suggest other ways to verify.</p></div></details>
+        <details><summary>Why did my verification fail?</summary><div><p>Most often because a copy, scan or photo of a screen was used instead of the original document. Try again with your original valid passport or ID card. If it fails again, message us on <a href="https://wa.me/37122046801" target="_blank" rel="noopener">WhatsApp</a> or <a href="https://t.me/finboosupport" target="_blank" rel="noopener">Telegram</a>.</p></div></details>
+        <details><summary>Can I add more than one withdrawal method?</summary><div><p>Yes, right away or later: in Settings → Withdrawal methods or while creating an invoice. A new method may require signing a new agreement.</p></div></details>
+        <details><summary>How do I turn off auto-signing of certificates?</summary><div><p>In your account settings, at any time. After that, you will need to sign each certificate manually, and the payout will wait for your signature.</p></div></details>
+      </div>
+    </section>
+
+    <div class="end">
+      <div class="end-text"><h2>Still have questions?</h2>
+      <p>Message us on a messenger. We’ll help with any step, from signing up to your first payout.</p></div>
+      <div class="end-btns"><a class="btn" href="https://wa.me/37122046801" target="_blank" rel="noopener">Message on WhatsApp</a><a class="btn btn-ghost" href="https://t.me/finboosupport" target="_blank" rel="noopener">Message on Telegram</a></div>
+    </div>
+  </main>
+</div>
+
+<footer class="foot"><div class="foot-in"><div><svg viewBox="262 255 1625 420" aria-hidden="true" fill="#FFFFFF"><path d="M572.7,341.46c23.58,0,38.22-13.37,38.22-34.88s-15-34.32-38.22-34.32-38.23,13.47-38.23,34.32,14.65,34.88,38.23,34.88Z"/><rect x="540.61" y="383.67" width="60.85" height="273.07"/><path d="M454.63,265.07l-.68.05c-60.79,4.05-101.63,47.13-110.47,116.98-1.39,15.9-2.2,32.21-2.34,47.48-.71,53.04,0,227.72,0,227.72h63.08s.22-148.35,0-203.88c-.04-16.01-.81-30.17.46-64.28,5.09-45.82,28.79-69.47,66.69-73.2l1.14-.11-17.88-50.75Z"/><path d="M581.34,385.47s-87.49,90.98-316.47,33.48v50s211.29,56.54,335.68-39.54l-19.2-43.94Z"/><path d="M861.73,400.74c-14.21-14.6-35.14-22.64-58.93-22.64-33.7,0-64.05,16.44-92.69,50.23v-44.66h-60.85v273.65h60.85v-177.76c16.29-22.65,41.68-49.53,70.4-49.53,12.14,0,22.21,4.67,29.54,12.17,8.38,8.58,11.55,18.15,12.45,35.92v178.61h60.85v-190.81c-.69-30.32-6.54-49.68-21.63-65.19Z"/><path d="M1804.27,536.54c.18-2.37.34-4.75.44-7.2.12-2.91.19-5.86.19-8.85,0-61.32-24.23-99.56-57.6-120.78l-.33-.39c-22.27-14.08-48.81-21.22-78.89-21.22-.09,0-.18,0-.28,0s-.18,0-.28,0c-30.08,0-56.62,7.14-78.89,21.22l-.33.39c-33.36,21.21-57.58,59.43-57.6,120.7,0,.03,0,.05,0,.08,0,.07,0,.13,0,.2,0,2.91.07,5.79.18,8.64.1,2.5.26,4.93.44,7.34.02.24.03.5.05.74,7.23,92.1,73.69,125.48,136.15,125.48.09,0,.18,0,.28,0,.09,0,.18,0,.28,0,62.45,0,128.91-33.38,136.14-125.47.02-.29.04-.59.06-.88ZM1721.43,592.94c-13.35,15-31.89,22.95-53.64,23.02-21.75-.07-40.3-8.02-53.64-23.02-13.73-15.43-21.44-38.13-22.48-65.92-.08-2.15-.13-4.32-.13-6.53,0-13.03,1.35-24.91,3.95-35.53.01-.06.03-.12.04-.18.3-1.23.64-2.44.97-3.64.13-.45.25-.91.39-1.35.23-.78.48-1.55.73-2.32.32-.97.63-1.94.97-2.88.08-.23.16-.45.24-.67,3.71-10.09,8.81-18.8,15.31-26.08,13.29-14.86,31.83-22.74,53.64-22.81,21.81.07,40.36,7.95,53.64,22.81,6.5,7.27,11.61,15.99,15.31,26.08.08.22.16.44.24.67.34.95.66,1.92.97,2.89.25.76.49,1.53.72,2.31.14.45.26.91.39,1.37.34,1.2.67,2.4.97,3.63.02.06.03.13.05.19,2.6,10.62,3.95,22.5,3.95,35.52,0,2.22-.05,4.4-.13,6.56-1.04,27.77-8.75,50.46-22.48,65.89Z"/><path d="M1500.58,536.54c.18-2.37.34-4.75.44-7.2.12-2.91.19-5.86.19-8.85,0-61.32-24.23-99.56-57.6-120.78l-.33-.39c-22.27-14.08-48.81-21.22-78.89-21.22-.09,0-.18,0-.28,0s-.18,0-.28,0c-30.08,0-56.62,7.14-78.89,21.22l-.33.39c-33.36,21.21-57.58,59.43-57.6,120.7,0,.03,0,.05,0,.08,0,.07,0,.13,0,.2,0,2.91.07,5.79.18,8.64.1,2.5.26,4.93.44,7.34.02.24.03.5.05.74,7.23,92.1,73.69,125.48,136.15,125.48.09,0,.18,0,.28,0,.09,0,.18,0,.28,0,62.45,0,128.91-33.38,136.14-125.47.02-.29.04-.59.06-.88ZM1417.74,592.94c-13.35,15-31.89,22.95-53.64,23.02-21.75-.07-40.3-8.02-53.64-23.02-13.73-15.43-21.44-38.13-22.48-65.92-.08-2.15-.13-4.32-.13-6.53,0-13.03,1.35-24.91,3.95-35.53.01-.06.03-.12.04-.18.3-1.23.64-2.44.97-3.64.13-.45.25-.91.39-1.35.23-.78.48-1.55.73-2.32.32-.97.63-1.94.97-2.88.08-.23.16-.45.24-.67,3.71-10.09,8.81-18.8,15.31-26.08,13.29-14.86,31.83-22.74,53.64-22.81,21.81.07,40.36,7.95,53.64,22.81,6.5,7.27,11.61,15.99,15.31,26.08.08.22.16.44.24.67.34.95.66,1.92.97,2.89.25.76.49,1.53.72,2.31.14.45.26.91.39,1.37.34,1.2.67,2.4.97,3.63.02.06.03.13.05.19,2.6,10.62,3.95,22.5,3.95,35.52,0,2.22-.05,4.4-.13,6.56-1.04,27.77-8.75,50.46-22.48,65.89Z"/><path d="M1199.23,520.49c0-.35-.02-.68-.02-1.02-.02-3.02-.08-6-.21-8.92,0-.09-.01-.18-.02-.27-2.45-55.63-24.84-92.46-55.98-112.61-20.07-12.99-43.62-19.57-70.01-19.57-35.74,0-63.35,12.68-82.1,37.69v-140.19h-60.85v381.72h60.85v-30.28c11.62,14.62,26.55,24.59,44.16,30.24.67.22,1.35.43,2.03.64.99.3,1.99.58,3,.85,1.32.36,2.65.68,4,1,.58.13,1.16.27,1.75.39,1.8.38,3.63.72,5.49,1.02.26.04.52.09.79.13,2.19.34,4.41.63,6.68.86,0,0,.02,0,.02,0,4.58.46,9.29.71,14.18.71.05,0,.11,0,.16,0,.05,0,.1,0,.15,0,64.16,0,122.5-40.69,125.77-133.85.03-.79.02-1.59.05-2.38.05-1.96.11-3.91.11-5.92,0-.04,0-.08,0-.12s0-.08,0-.12ZM1115.7,592.94c-13.47,15.06-32.29,23.03-54.41,23.03-34.6,0-60.25-19.41-70.4-53.27v-83.86c10.11-34.21,35.76-53.82,70.4-53.82,48.27,0,77.09,35.69,77.09,95.47,0,30.8-7.84,55.85-22.68,72.45Z"/><path d="M1877.81,628.8c0,16.24-12.31,28.63-28.63,28.63s-28.63-12.39-28.63-28.63,12.31-28.33,28.63-28.33,28.63,12.16,28.63,28.33ZM1871.95,628.8c0-13.35-9.42-22.84-22.77-22.84s-22.77,9.35-22.77,22.84,9.34,23.14,22.77,23.14,22.77-9.72,22.77-23.14ZM1863.05,643.86h-6.82c-.45-8.83-2.23-10.9-6.3-10.9h-6.3v10.9h-6.82v-30.04h14.61c6.9,0,10.98,3.49,10.98,9.27,0,3.86-1.85,6.6-5.12,8.08,3.71,1.78,5.49,5.86,5.78,12.68ZM1850.82,627.76c2.97,0,4.6-1.56,4.6-4.3s-1.56-4.08-4.23-4.08h-7.56v8.38h7.19Z"/></svg><p data-en="Simple way for global work. Issue invoices and get paid anywhere in the world.">Простой путь к глобальной работе. Выставляйте счета и получайте выплаты по всему миру.</p></div><ul><li><a href="https://finboo.io/en/privacy-policy.html" target="_blank" rel="noopener" data-en="Privacy Policy">Политика конфиденциальности</a></li><li><a href="https://t.me/finboosupport" target="_blank" rel="noopener" data-en="Support on Telegram">Поддержка в Telegram</a></li><li><a href="https://wa.me/37122046801" target="_blank" rel="noopener" data-en="Support on WhatsApp">Поддержка в WhatsApp</a></li></ul></div><div class="foot-copy" data-en="© 2026 Finboo. All rights reserved.">© 2026 Finboo. Все права защищены.</div></footer>
 
 <div class="support" id="support" data-open="false">
   <div class="support-links" id="support-links">
     <a class="sl-wa" href="https://wa.me/37122046801" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5a9.5 9.5 0 0 0-8.2 14.3L2.5 21.5l4.8-1.3A9.5 9.5 0 1 0 12 2.5Zm0 2a7.5 7.5 0 1 1-3.9 13.9l-.4-.2-2.3.6.6-2.2-.2-.4A7.5 7.5 0 0 1 12 4.5Zm-2.6 3.3c-.3 0-.6.1-.8.4-.3.3-.9.9-.9 2.1s.9 2.5 1 2.6c.1.2 1.8 2.8 4.4 3.8 2.1.8 2.6.7 3 .6.5 0 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.2-.2-.5-.3l-1.6-.8c-.2-.1-.4-.1-.6.1l-.7.9c-.1.2-.3.2-.5.1-.3-.1-1.1-.4-2-1.2-.7-.7-1.2-1.5-1.4-1.7-.1-.3 0-.4.1-.5l.4-.4.3-.4v-.4l-.7-1.8c-.2-.5-.4-.4-.5-.4h-.5Z"/></svg></span>WhatsApp</a>
     <a class="sl-tg" href="https://t.me/finboosupport" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.7 4.3 2.9 11.2c-.9.4-.9 1.4 0 1.7l4.4 1.4 1.7 5.3c.2.7 1 .9 1.5.4l2.5-2.3 4.6 3.4c.6.4 1.4.1 1.6-.6l3-14.6c.2-1-.7-1.9-1.5-1.6Zm-3.1 3.6-7.9 7.2-.3 3-1.3-4.2 9.5-6Z"/></svg></span>Telegram</a>
   </div>
-  <button class="support-toggle" id="support-toggle" type="button" aria-expanded="false" aria-controls="support-links" aria-label="Связаться с поддержкой">
+  <button class="support-toggle" id="support-toggle" type="button" aria-expanded="false" aria-controls="support-links" aria-label="Связаться с поддержкой" data-en-aria="Contact support">
     <svg class="i-chat" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12a8 8 0 0 1-11.6 7.1L4 20l1-4.1A8 8 0 1 1 20 12Z"/><path d="M8.5 11h7M8.5 14h4.5"/></svg>
     <svg class="i-close" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
   </button>
 </div>
 
-<dialog id="lb" aria-label="Скриншот крупно"><button type="button" id="lb-close">Закрыть ✕</button><img id="lb-img" alt=""></dialog>
+<dialog id="lb" aria-label="Скриншот крупно" data-en-aria="Enlarged screenshot"><button type="button" id="lb-close" data-en="Close ✕">Закрыть ✕</button><img id="lb-img" alt=""></dialog>
 
 <script>
 (function(){
@@ -557,36 +885,59 @@ dialog button{position:fixed;top:calc(env(safe-area-inset-top,0px) + 14px);right
   var hh=document.getElementById('hdr-help');
   if(hh) hh.addEventListener('click',function(){sup.dataset.open='true';st.setAttribute('aria-expanded','true');st.focus();});
 
-  // fee calculator (5%)
-  var amt=document.getElementById('amt'), payer='me', R=0.05;
-  var fmt=function(n){return n.toLocaleString('ru-RU',{minimumFractionDigits:2,maximumFractionDigits:2});};
-  function calc(){
-    var a=Math.max(0,parseFloat(amt.value)||0), inv, you, fee;
-    if(payer==='me'){inv=a;fee=a*R;you=a-fee;}
-    else if(payer==='client'){fee=a*R;inv=a+fee;you=a;}
-    else{fee=a*R;inv=a+fee/2;you=a-fee/2;}
-    document.getElementById('o-inv').textContent=fmt(inv);
-    document.getElementById('o-fee').textContent=fmt(fee);
-    document.getElementById('o-you').textContent=fmt(you);
-  }
-  amt.addEventListener('input',calc);
-  document.querySelectorAll('.seg button').forEach(function(b){
-    b.addEventListener('click',function(){
-      payer=b.dataset.p;
-      document.querySelectorAll('.seg button').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});
-      calc();
-    });
+  // fee calculators (5%), one per language
+  document.querySelectorAll('.calc').forEach(function(box){
+    var amt=box.querySelector('.c-amt'), payer='me', R=0.05, loc=box.closest('[lang]').getAttribute('lang')==='en'?'en-US':'ru-RU';
+    var fmt=function(n){return n.toLocaleString(loc,{minimumFractionDigits:2,maximumFractionDigits:2});};
+    var btns=box.querySelectorAll('.seg button');
+    function calc(){
+      var a=Math.max(0,parseFloat(amt.value)||0), inv, you, fee=a*R;
+      if(payer==='me'){inv=a;you=a-fee;} else if(payer==='client'){inv=a+fee;you=a;} else {inv=a+fee/2;you=a-fee/2;}
+      box.querySelector('.o-inv').textContent=fmt(inv);
+      box.querySelector('.o-fee').textContent=fmt(fee);
+      box.querySelector('.o-you').textContent=fmt(you);
+    }
+    amt.addEventListener('input',calc);
+    btns.forEach(function(b){b.addEventListener('click',function(){payer=b.dataset.p;btns.forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});calc();});});
+    calc();
   });
-  calc();
 
   // scrollspy
-  var links=[].slice.call(document.querySelectorAll('#toc a'));
+  var links=[].slice.call(document.querySelectorAll('.toc a'));
   if('IntersectionObserver' in window){
     var io=new IntersectionObserver(function(es){
       es.forEach(function(e){ if(e.isIntersecting){ links.forEach(function(l){l.classList.toggle('on',l.getAttribute('href')==='#'+e.target.id);}); } });
     },{rootMargin:'-30% 0px -60% 0px'});
     links.forEach(function(l){var s=document.querySelector(l.getAttribute('href')); if(s) io.observe(s);});
   }
+
+  // language switch (RU / EN)
+  var TITLES={ru:document.title,en:'Getting Started with Finboo'};
+  var shared=[].slice.call(document.querySelectorAll('[data-en]'));
+  shared.forEach(function(el){el.dataset.ru=el.textContent;});
+  var ariaEls=[].slice.call(document.querySelectorAll('[data-en-aria]'));
+  ariaEls.forEach(function(el){el.dataset.ruAria=el.getAttribute('aria-label');});
+  function setLang(l,save){
+    document.querySelectorAll('.wrap[data-lang]').forEach(function(w){w.hidden=w.dataset.lang!==l;});
+    shared.forEach(function(el){el.textContent=l==='en'?el.dataset.en:el.dataset.ru;});
+    ariaEls.forEach(function(el){el.setAttribute('aria-label',l==='en'?el.dataset.enAria:el.dataset.ruAria);});
+    document.querySelectorAll('[data-set-lang]').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.setLang===l?'true':'false');});
+    document.documentElement.lang=l; document.title=TITLES[l];
+    if(save){try{localStorage.setItem('finboo-guide-lang',l);}catch(e){}}
+  }
+  document.querySelectorAll('[data-set-lang]').forEach(function(b){
+    b.addEventListener('click',function(){
+      var l=b.dataset.setLang; setLang(l,true);
+      try{history.replaceState(null,'',l==='en'?'#en':location.pathname+location.search);}catch(e){}
+      window.scrollTo(0,0);
+    });
+  });
+  var h=location.hash, start='ru';
+  try{var q=new URLSearchParams(location.search).get('lang'); if(q==='en'||q==='ru') start=q;}catch(e){}
+  if(h==='#en'||h.indexOf('#en-')===0) start='en';
+  else if(start==='ru'&&!/[?&]lang=ru/.test(location.search)&&h.length<2){try{if(localStorage.getItem('finboo-guide-lang')==='en') start='en';}catch(e){}}
+  setLang(start,false);
+  if(h.length>1&&h!=='#en'){var t=document.getElementById(h.slice(1)); if(t) t.scrollIntoView();}
 })();
 </script>
 </body>
